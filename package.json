@@ -4,6 +4,7 @@
   "description": "A Social Media app to enable users to share posts and communicate privately and securely without advertisement or other distractions. Built with Node.js, express.js, sequelize ORM with a MYSQL database and handlebars.js templates.",
   "main": "server.js",
   "scripts": {
+    "devStart": "nodemon server.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,7 +39,9 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.7",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
