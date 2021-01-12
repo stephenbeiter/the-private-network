@@ -29,6 +29,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// POST
 router.post('/', (req, res) => {
   console.log(req.headers);
   Group.create({

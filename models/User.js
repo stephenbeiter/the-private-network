@@ -36,6 +36,10 @@ User.init(
       validate: {
         isURL: true
       }
+    },
+    last_login: {
+      type: DataTypes.TIME,
+      allowNull: true
     }
   },
   {
