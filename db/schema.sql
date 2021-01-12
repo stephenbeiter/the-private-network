@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS private_network;
-CREATE DATABASE private_network;
+DROP DATABASE IF EXISTS tpn_db;
+CREATE DATABASE tpn_db;
