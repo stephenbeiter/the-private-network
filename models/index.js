@@ -11,12 +11,4 @@ Post.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Usergroup.hasMany(User, {
-  foreignKey: 'id'
-});
-
-Usergroup.hasMany(Group, {
-  foreignKey: 'id'
-});
-
 module.exports = { User, Post, Group, Usergroup };

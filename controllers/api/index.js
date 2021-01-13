@@ -8,6 +8,6 @@ const usergroupRoutes = require('./usergroup-routes');
 router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
 router.use('/groups', groupRoutes);
-router.use('/usergroups', groupRoutes);
+router.use('/usergroups', usergroupRoutes);
 
 module.exports = router;
