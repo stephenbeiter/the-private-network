@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/user/:id', (req, res) => {
+router.get('/admin/:id', (req, res) => {
   Group.findAll({
     where: { group_admin: req.params.id }
   })
@@ -86,6 +86,25 @@ router.delete('/:id', (req, res) => {
   Group.destroy({
     where: {
       id: req.params.id
+    }
+  })
+    .then(dbGroupData => {
+      if (!dbGroupData) {
+        res.status(404).json({ message: 'No Group found with this id' });
+        return;
+      }
+      res.json(dbGroupData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete('/admin/:id', (req, res) => {
+  Group.destroy({
+    where: {
+      group_admin: req.params.id
     }
   })
     .then(dbGroupData => {

@@ -104,7 +104,86 @@ router.post('/', (req, res) => {
     user_id: req.body.user_id,
     group_id: req.body.group_id
   })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// PUT
+router.put('/:id', (req, res) => {
+  Post.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData[0]) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// DELETE
+router.delete('/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete('/user/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      user_id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete('/group/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      group_id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
