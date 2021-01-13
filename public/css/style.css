@@ -1,0 +1,90 @@
+:root {
+  --light-green: #f2f7f2;
+  --dark-green: #2c4741;
+  --med-green: #295f3a;
+  --dark: #19191f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat:wght@400", sans-serif;
+  background-color: var(--light-green);
+}
+
+#password-signup,
+#username-signup,
+#email-signup,
+#password-login,
+#username-login,
+#email-login {
+  border: solid 1px var(--dark-green);
+  border-radius: 0.5rem;
+}
+
+.matrix {
+  margin-top: 2rem;
+}
+
+nav {
+  background-color: var(--dark) !important;
+}
+
+.btn {
+  margin-top: 1.2rem;
+  border-radius: 0.3rem;
+}
+.card {
+  margin-top: 8vh;
+  border-radius: 0.5rem;
+}
+.card-title span {
+  font-weight: 550;
+  line-height: 1.8;
+  color: var(--med-green);
+}
+.card-content p {
+  color: var(--dark);
+  font-size: 2.9rem;
+  margin: 1.5rem 1rem;
+  padding-left: 1rem;
+}
+.card-bottom p {
+  font-weight: lighter;
+  font-size: 1rem;
+  color: #9e9e9e;
+}
+.card-bottom p a {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+nav ul a,
+nav .brand-logo {
+  color: var(--light-green);
+  margin: 0.5rem;
+}
+nav ul a {
+  line-height: 4;
+}
+.matrix-img {
+  background-image: url("/img/matrix-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+.slogan {
+  background-color: transparent;
+  margin-top: 16vw;
+}
+
+.med-green {
+  background-color: var(--med-green) !important;
+}
+.dark-green {
+  background-color: var(--dark-green) !important;
+}
