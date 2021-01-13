@@ -4,6 +4,7 @@
   "description": "A Social Media app to enable users to share posts and communicate privately and securely without advertisement or other distractions. Built with Node.js, express.js, sequelize ORM with a MYSQL database and handlebars.js templates.",
   "main": "server.js",
   "scripts": {
+    "devStart": "nodemon server.js",
     "start": "node server.js",
     "devStart": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

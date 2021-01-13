@@ -16,9 +16,8 @@ Group.init(
       allowNull: false
     },
     group_admin: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "Public"
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     group_img: {
       type: DataTypes.STRING,

@@ -31,6 +31,7 @@ Post.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id'
@@ -38,8 +39,11 @@ Post.init(
     },
     group_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1
+      allowNull: true,
+      references: {
+        model: 'group',
+        key: 'id'
+      }
     }
   },
   {
