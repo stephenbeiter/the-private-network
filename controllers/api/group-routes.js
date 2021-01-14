@@ -1,7 +1,22 @@
 const router = require('express').Router();
 const { Group, User } = require('../../models');
 
-// GET
+// Create group
+router.post('/', (req, res) => {
+  Group.create({
+    groupname: req.body.groupname,
+    group_admin: req.body.group_admin,
+    group_img: req.body.group_img,
+    group_color: req.body.group_color
+  })
+    .then(dbGroupData => res.json(dbGroupData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get all groups
 router.get('/', (req, res) => {
   Group.findAll({
   })
@@ -12,6 +27,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// Get single group
 router.get('/:id', (req, res) => {
   Group.findOne({
     where: { id: req.params.id }
@@ -29,6 +45,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// Get groups by admin
 router.get('/admin/:id', (req, res) => {
   Group.findAll({
     where: { group_admin: req.params.id }
@@ -65,22 +82,7 @@ router.get('/user/:id', (req, res) => {
     });
 });
 
-// POST
-router.post('/', (req, res) => {
-  Group.create({
-    groupname: req.body.groupname,
-    group_admin: req.body.group_admin,
-    group_img: req.body.group_img,
-    group_color: req.body.group_color
-  })
-    .then(dbGroupData => res.json(dbGroupData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// PUT
+// Update group
 router.put('/:id', (req, res) => {
   Group.update(req.body, {
     where: {
@@ -100,7 +102,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE
+// Delete group
 router.delete('/:id', (req, res) => {
   Group.destroy({
     where: {
@@ -120,6 +122,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// Delete groups by admin
 router.delete('/admin/:id', (req, res) => {
   Group.destroy({
     where: {
