@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col s3 m3 l3">
+        <div class="card small">
+            <div class="card-image">
+                <img class='responsive-img center' {{!-- Replace with user's image --}}
+                    src='https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png'>
+            </div>
+            <div class="card-title">
+                {{!-- Replace with user's name --}}
+                <span> First Name Last Name</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-action">
+                {{!-- Replace with user's group --}}
+                <a href='#'>Group Name</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m5 l5">
+        {{!-- run for each post --}}
+        <div class='card'>
+            <div class="card-title">
+                {{!-- replace with post title --}}
+                <a href='/post/{{id}}'><span>Post Title</span></a>
+            </div>
+            <div class='card-content'>
+                {{!-- replace with post content --}}
+                <p>Post Content</p>
+            </div>
+            <div class="card-action">
+                {{!-- replace with comments --}}
+                <a href='/post/{{id}}'># of comments</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s3 m3 l3">
+        <div class="card">
+            <div class="card-title">
+                <span>Search for a Post</span>
+                <form action='/search' class='seach-form'>
+                    <div class="input-field">
+                        <input id='search' type='search' name='term' required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

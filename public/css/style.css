@@ -9,9 +9,19 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   font-family: "Montserrat:wght@400", sans-serif;
   background-color: var(--light-green);
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+.container {
+  width: 90%;
 }
 
 #password-signup,
@@ -38,14 +48,18 @@ nav {
 }
 .card {
   margin-top: 8vh;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem !important;
+}
+.card .card-action:last-child {
+  border-radius: 0.5rem !important
+;
 }
 .card-title span {
   font-weight: 550;
   line-height: 1.8;
   color: var(--med-green);
 }
-.card-content p {
+.card-content.slogan p {
   color: var(--dark);
   font-size: 2.9rem;
   margin: 1.5rem 1rem;
@@ -59,6 +73,11 @@ nav {
 .card-bottom p a {
   font-weight: 600;
   color: var(--dark);
+}
+
+.card-image {
+  max-width: 200px;
+  max-height: 200px !important;
 }
 
 nav ul a,
