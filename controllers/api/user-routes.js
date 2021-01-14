@@ -1,9 +1,14 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Group } = require('../../models');
 
-// GET
-router.get('/', (req, res) => {
-  User.findAll()
+// Create user
+router.post('/', (req, res) => {
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    profile_img: req.body.profile_img
+  })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
       console.log(err);
@@ -11,6 +16,23 @@ router.get('/', (req, res) => {
     });
 });
 
+// Get all users
+router.get('/', (req, res) => {
+  User.findAll({
+    include: [{
+      model: Group,
+      attributes: ['id', 'groupname'],
+      through: { attributes: [] }
+    }]
+  })
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get single user
 router.get('/:id', (req, res) => {
   User.findOne({
     where: { id: req.params.id }
@@ -28,38 +50,26 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST
-router.post('/', (req, res) => {
-  User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    profile_img: req.body.profile_img
+// Get Users by group
+router.get('/group/:id', (req, res) => {
+  Group.findAll({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: User,
+      attributes: ['id', 'username', 'email', 'profile_img'],
+      through: { attributes: [] }
+    }]
   })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => { res.json(dbUserData[0].users) })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-router.post('/login', (req, res) => {
-  User.findOne({
-    where: {
-      email: req.body.email
-    }
-  }).then(dbUserData => {
-    if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
-      return;
-    }
-
-    res.json({ user: dbUserData, message: "You are now logged in!" });
-
-  });
-});
-
-// PUT
+// Update user
 router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
@@ -80,10 +90,8 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE
+// Delete user
 router.delete('/:id', (req, res) => {
-  console.log(req.body);
-  console.log(req.params)
   User.destroy({
     where: {
       id: req.params.id
