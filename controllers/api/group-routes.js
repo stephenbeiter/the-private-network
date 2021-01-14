@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Group } = require('../../models');
+const { Group, User } = require('../../models');
 
 // GET
 router.get('/', (req, res) => {
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/user/:id', (req, res) => {
+router.get('/admin/:id', (req, res) => {
   Group.findAll({
     where: { group_admin: req.params.id }
   })
@@ -40,6 +40,25 @@ router.get('/user/:id', (req, res) => {
       }
       res.json(dbGroupData);
     })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get groups by user
+router.get('/user/:id', (req, res) => {
+  User.findAll({
+    where: {
+      id: req.params.id
+    },
+    include: [{
+      model: Group,
+      attributes: ['id', 'groupname', 'group_admin', 'group_img', 'group_color'],
+      through: { attributes: [] }
+    }]
+  })
+    .then(dbGroupData => { res.json(dbGroupData[0].groups) })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -86,6 +105,25 @@ router.delete('/:id', (req, res) => {
   Group.destroy({
     where: {
       id: req.params.id
+    }
+  })
+    .then(dbGroupData => {
+      if (!dbGroupData) {
+        res.status(404).json({ message: 'No Group found with this id' });
+        return;
+      }
+      res.json(dbGroupData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete('/admin/:id', (req, res) => {
+  Group.destroy({
+    where: {
+      group_admin: req.params.id
     }
   })
     .then(dbGroupData => {
