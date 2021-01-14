@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col s3 m3 l3">
         <div class="card small">
-            <div class="card-image">
-                <img class='responsive-img center' {{!-- Replace with user's image --}}
+            <div class="card-image center-img">
+                <img class='responsive-img ' {{!-- Replace with user's image --}}
                     src='https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png'>
             </div>
             <div class="card-title">
                 {{!-- Replace with user's name --}}
-                <span> First Name Last Name</span>
+                <span> First-Name Last-Name</span>
             </div>
         </div>
         <div class="card">
@@ -22,11 +22,48 @@
         <div class='card'>
             <div class="card-title">
                 {{!-- replace with post title --}}
-                <a href='/post/{{id}}'><span>Post Title</span></a>
+                <a href='/post/{{id}}'><span>Post Title 1</span></a>
             </div>
             <div class='card-content'>
                 {{!-- replace with post content --}}
-                <p>Post Content</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut, nam
+                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt suscipit ratione
+                    odit? Voluptatum, eius.</p>
+            </div>
+            {{!-- replace with user's photo if available --}}
+            <div class="row">
+                <div class="col s-10">
+                    <div class="card-image center-img">
+                        <img class='responsive-img'
+                            src='https://perfectdaytoplay.com/wp-content/uploads/2020/05/Travel-funny-meme-covid19-pandemic-joke-humor-10.jpg'>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                {{!-- replace with comments --}}
+                <a href='/post/{{id}}'># of comments</a>
+            </div>
+        </div>
+
+        <div class='card'>
+            <div class="card-title">
+                {{!-- replace with post title --}}
+                <a href='/post/{{id}}'><span>Post Title 2</span></a>
+            </div>
+            <div class='card-content'>
+                {{!-- replace with post content --}}
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut, nam
+                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt suscipit ratione
+                    odit? Voluptatum, eius.</p>
+            </div>
+            {{!-- replace with user's photo if available --}}
+            <div class="row">
+                <div class="col s-10">
+                    <div class="card-image center-img">
+                        <img class='responsive-img'
+                            src='https://static.demilked.com/wp-content/uploads/2020/03/5e69f0b02f521-coronavirus-people-travel-jokes-fb6-png__700.jpg'>
+                    </div>
+                </div>
             </div>
             <div class="card-action">
                 {{!-- replace with comments --}}
@@ -35,15 +72,51 @@
         </div>
     </div>
     <div class="col s3 m3 l3">
-        <div class="card">
+        <div class="card search-card">
             <div class="card-title">
-                <span>Search for a Post</span>
-                <form action='/search' class='seach-form'>
+                <form action='feed/search' class='search-form'>
                     <div class="input-field">
-                        <input id='search' type='search' name='term' required>
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <input id='search' placeholder='Search' type='search' name='term' required>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+        <div class="card">
+
+            <div class="card-content center">
+                <a class="white black-text btn modal-trigger" href="#modal1"><span class="material-icons">
+                        edit
+                    </span>Start a Post</a>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 push-s2">
+                                <form class='new-post-form'>
+                                    <div>
+                                        <label class='form-text left' for="post-title">Title</label>
+                                        <input type="text" id='post-title' name='post-title' />
+                                    </div>
+                                    <div>
+                                        <label class='form-text left' for="post-content">Content</label>
+                                        <textarea id='post-content' name='post-content'></textarea>
+                                        <input id="fileInput" type="file" name="image" className="form-input" />
+                                    </div>
+                                    {{!-- <div class="buttons">
+                                <button type='submit' class='btn med-green'>Create</button>
+                            </div> --}}
+                                    {{!-- <div class="modal-footer"> --}}
+                                    <button type='submit' class='modal-close btn med-green'> Create</button>
+                                    {{!-- </div> --}}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <script src="/javascript/add-post.js"></script>

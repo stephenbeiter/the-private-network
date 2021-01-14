@@ -13,7 +13,7 @@ async function signupFormHandler(event) {
         email,
         password,
       }),
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {

@@ -46,18 +46,25 @@ nav {
   margin-top: 1.2rem;
   border-radius: 0.3rem;
 }
+.btn.modal-trigger {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: none;
+  border: solid 1px var(--med-green);
+}
 .card {
   margin-top: 8vh;
   border-radius: 0.5rem !important;
 }
 .card .card-action:last-child {
-  border-radius: 0.5rem !important
-;
+  border-radius: 0.5rem !important;
+  border: none;
 }
 .card-title span {
   font-weight: 550;
   line-height: 1.8;
   color: var(--med-green);
+  padding: 0.5rem;
 }
 .card-content.slogan p {
   color: var(--dark);
@@ -75,9 +82,22 @@ nav {
   color: var(--dark);
 }
 
-.card-image {
+.card-image.profile {
   max-width: 200px;
   max-height: 200px !important;
+}
+
+.center-img {
+  width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card.small {
+  height: 220px;
+  padding: 3%;
+  display: flex;
 }
 
 nav ul a,
@@ -94,6 +114,24 @@ nav ul a {
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
+}
+
+/* .row:after {
+  display: contents;
+} */
+
+#search {
+  width: 65%;
+  border: none;
+  padding: 5% 15%;
+  max-height: 24px;
+}
+.search-card {
+  border-radius: 1rem !important;
+}
+
+.input-field input[type="search"]:focus:not(.browser-default) {
+  background-color: transparent !important;
 }
 
 .slogan {
