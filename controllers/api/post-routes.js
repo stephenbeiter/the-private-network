@@ -1,96 +1,7 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Group } = require('../../models');
 
-router.get('/', (req, res) => {
-  console.log('======================');
-  Post.findAll({
-    attributes: ['id', 'post_url', 'title', 'created_at'],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  }).then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.get('/:id', (req, res) => {
-  console.log('======================');
-  Post.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
-    // include: [
-    //   {
-    //     model: User,
-    //     attributes: ['username']
-    //   },
-    //   {
-    //     model: Group,
-    //     attributes: ['groupname']
-    //   }
-    // ]
-  }).then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.get('/user/:id', (req, res) => {
-  console.log('======================');
-  Post.findAll({
-    where: {
-      user_id: req.params.id
-    },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
-    // include: [
-    //   {
-    //     model: User,
-    //     attributes: ['username']
-    //   },
-    //   {
-    //     model: Group,
-    //     attributes: ['groupname']
-    //   }
-    // ]
-  }).then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.get('/group/:id', (req, res) => {
-  console.log('======================');
-  Post.findAll({
-    where: {
-      group_id: req.params.id
-    },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
-    // include: [
-    //   {
-    //     model: User,
-    //     attributes: ['username']
-    //   },
-    //   {
-    //     model: Group,
-    //     attributes: ['groupname']
-    //   }
-    // ]
-  }).then(dbPostData => res.json(dbPostData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// Post
+// Create post
 router.post('/', (req, res) => {
   Post.create({
     title: req.body.title,
@@ -106,7 +17,104 @@ router.post('/', (req, res) => {
     });
 });
 
-// PUT
+// Get all posts
+router.get('/', (req, res) => {
+  console.log('======================');
+  Post.findAll({
+    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Group,
+        attributes: ['groupname']
+      }
+    ]
+  }).then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get single post
+router.get('/:id', (req, res) => {
+  console.log('======================');
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Group,
+        attributes: ['groupname']
+      }
+    ]
+  }).then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get posts by user
+router.get('/user/:id', (req, res) => {
+  console.log('======================');
+  Post.findAll({
+    where: {
+      user_id: req.params.id
+    },
+    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Group,
+        attributes: ['groupname']
+      }
+    ]
+  }).then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Get posts by group
+router.get('/group/:id', (req, res) => {
+  console.log('======================');
+  Post.findAll({
+    where: {
+      group_id: req.params.id
+    },
+    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Group,
+        attributes: ['groupname']
+      }
+    ]
+  }).then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Update post
 router.put('/:id', (req, res) => {
   Post.update(req.body, {
     individualHooks: true,
@@ -127,7 +135,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// DELETE
+// Delete post
 router.delete('/:id', (req, res) => {
   Post.destroy({
     where: {
@@ -147,6 +155,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// Delete posts by user
 router.delete('/user/:id', (req, res) => {
   Post.destroy({
     where: {
@@ -155,7 +164,7 @@ router.delete('/user/:id', (req, res) => {
   })
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No posts found from this user' });
         return;
       }
       res.json(dbPostData);
@@ -166,6 +175,7 @@ router.delete('/user/:id', (req, res) => {
     });
 });
 
+// Delete posts by group
 router.delete('/group/:id', (req, res) => {
   Post.destroy({
     where: {
@@ -174,7 +184,7 @@ router.delete('/group/:id', (req, res) => {
   })
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+        res.status(404).json({ message: 'No posts found from this group' });
         return;
       }
       res.json(dbPostData);
