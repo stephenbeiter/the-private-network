@@ -11,7 +11,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -32,7 +36,8 @@ User.init(
     },
     profile_img: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      defaultValue: "https://stroseschool.stroselions.net/wp-content/uploads/2018/04/profile-blank-reva-240x300.png",
       validate: {
         isURL: true
       }

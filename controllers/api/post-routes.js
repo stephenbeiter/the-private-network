@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['first_name', 'last_name']
       },
       {
         model: Group,
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['first_name', 'last_name']
       },
       {
         model: Group,
@@ -75,7 +75,7 @@ router.get('/user/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['first_name', 'last_name']
       },
       {
         model: Group,
@@ -100,7 +100,7 @@ router.get('/group/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['first_name', 'last_name']
       },
       {
         model: Group,

@@ -33,7 +33,7 @@ router.get("/:id", (req, res) => {
   })
     .then((dbGroupData) => {
       if (!dbGroupData) {
-        res.status(404).json({ message: "No Group found with this id" });
+        res.status(404).json({ message: "No group found with this id" });
         return;
       }
       res.json(dbGroupData);
@@ -51,7 +51,7 @@ router.get("/admin/:id", (req, res) => {
   })
     .then((dbGroupData) => {
       if (!dbGroupData) {
-        res.status(404).json({ message: "No Group found with this id" });
+        res.status(404).json({ message: "No group found with this id" });
         return;
       }
       res.json(dbGroupData);
@@ -94,7 +94,7 @@ router.put("/:id", (req, res) => {
   })
     .then((dbGroupData) => {
       if (!dbGroupData[0]) {
-        res.status(404).json({ message: "No Group found with this id" });
+        res.status(404).json({ message: "No group found with this id" });
         return;
       }
       res.json(dbGroupData);
@@ -114,7 +114,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbGroupData) => {
       if (!dbGroupData) {
-        res.status(404).json({ message: "No Group found with this id" });
+        res.status(404).json({ message: "No group found with this id" });
         return;
       }
       res.json(dbGroupData);
@@ -134,7 +134,7 @@ router.delete("/admin/:id", (req, res) => {
   })
     .then((dbGroupData) => {
       if (!dbGroupData) {
-        res.status(404).json({ message: "No Group found with this id" });
+        res.status(404).json({ message: "No group found with this id" });
         return;
       }
       res.json(dbGroupData);
