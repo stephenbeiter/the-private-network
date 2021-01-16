@@ -58,7 +58,7 @@ router.get('/group/:id', (req, res) => {
     },
     include: [{
       model: User,
-      attributes: ['id', 'username', 'email', 'profile_img'],
+      attributes: ['id', 'first_name', 'last_name', 'email', 'profile_img'],
       through: { attributes: [] }
     }]
   })

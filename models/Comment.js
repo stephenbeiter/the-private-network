@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model { }
+class Comment extends Model { }
 
-Post.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,18 +11,13 @@ Post.init(
       primaryKey: true,
       autoIncrement: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     body: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    post_img: {
+    comment_img: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "https://stroseschool.stroselions.net/wp-content/uploads/2018/04/profile-blank-reva-240x300.png",
+      allowNull: true,
       validate: {
         isURL: true
       }
@@ -35,11 +30,11 @@ Post.init(
         key: 'id'
       }
     },
-    group_id: {
+    post_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'group',
+        model: 'post',
         key: 'id'
       }
     }
@@ -48,8 +43,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'comment'
   }
 );
 
-module.exports = Post;
+module.exports = Comment;
