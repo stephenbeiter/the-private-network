@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col s3 m3 l3">
+    <div class="col s1 m3 l3">
         <div class="card small">
-            <div class="card-image center-img">
+            <div class="card-image center-img round-img">
                 <img class='responsive-img ' {{!-- Replace with user's image --}}
                     src='https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png'>
             </div>
@@ -9,17 +9,33 @@
                 {{!-- Replace with user's name --}}
                 <span> {{user.username}}</span>
             </div>
+            <div class="card-action">
+                <a href='#'><span class="material-icons">
+                        article
+                    </span>My Posts</a>
+            </div>
         </div>
+
         <div class="card">
             <div class="card-action">
                 {{!-- Replace with user's group --}}
-                <a href='#'>Group Name</a>
+
+                <a href='#'>
+                    <div class='m-icon'><span class="material-icons">
+                            groups
+                        </span></div><span class='desktop'>Groups</span>
+                </a>
             </div>
+            {{#each groups as |group|}}
+            <div class="card-action">
+                <a href='#'><span>{{groupname}}</span></a>
+            </div>
+            {{/each}}
         </div>
     </div>
     <div class="col s12 m5 l5">
-        {{!-- run for each post --}}
         {{#each posts as |post|}}
+
         <div class='card'>
             <div class="card-title">
                 {{!-- replace with post title --}}
@@ -27,8 +43,10 @@
             </div>
             <div class='card-content'>
                 {{!-- replace with post content --}}
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut, nam
-                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt suscipit
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut,
+                    nam
+                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt
+                    suscipit
                     ratione
                     odit? Voluptatum, eius.</p>
             </div>
@@ -36,7 +54,7 @@
             <div class="row">
                 <div class="col s-10">
                     <div class="card-image center-img">
-                        <img class='responsive-img' src={{post.post_img}}>
+                        <img class='responsive-img' src={{post_img}}>
                     </div>
                 </div>
             </div>
@@ -48,9 +66,9 @@
         {{/each}}
 
     </div>
-    <div class="col s3 m3 l3">
-        <div class="card search-card">
-            <div class="card-title">
+    <div class="col s1 m3 l3">
+        <div class="card card-round">
+            <div class="card-title search-card">
                 <form action='feed/search' class='search-form'>
                     <div class="input-field">
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -59,41 +77,115 @@
                 </form>
             </div>
         </div>
-        <div class="card">
 
-            <div class="card-content center">
-                <a class="white black-text btn modal-trigger" href="#modal1"><span class="material-icons">
-                        edit
-                    </span>Start a Post</a>
 
-                <!-- Modal Structure -->
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <div class="row">
-                            <div class="col s8 push-s2">
-                                <form class='new-post-form'>
-                                    <div>
-                                        <label class='form-text left' for="post-title">Title</label>
-                                        <input type="text" id='post-title' name='post-title' />
-                                    </div>
-                                    <div>
-                                        <label class='form-text left' for="post-content">Content</label>
-                                        <textarea id='post-content' name='post-content'></textarea>
-                                        <input id="fileInput" type="file" name="image" className="form-input" />
-                                    </div>
-                                    {{!-- <div class="buttons">
-                                <button type='submit' class='btn med-green'>Create</button>
-                            </div> --}}
-                                    {{!-- <div class="modal-footer"> --}}
-                                    <button type='submit' class='modal-close btn med-green'> Create</button>
-                                    {{!-- </div> --}}
-                                </form>
-                            </div>
+        <div class="card card-round center">
+            <span class="material-icons">
+                edit
+            </span>
+            <a class="white black-text btn modal-trigger" href="#modal1">Start a Post</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s8 push-s2">
+                            <form class='new-post-form'>
+                                <div>
+                                    <label class='form-text left' for="post-title">Title</label>
+                                    <input type="text" id='post-title' name='post-title' />
+                                </div>
+                                <div>
+                                    <label class='form-text left' for="post-content">Content</label>
+                                    <textarea id='post-content' name='post-content'></textarea>
+                                </div>
+                                <div>
+                                    <label class='form-text left' for="post-img-url">Image URL</label>
+                                    <input type="text" id='post-img-url' name='post-img-url' />
+                                    {{!-- enable once Cloudinary is implemented --}}
+                                    {{!-- =========================================== --}}
+                                    {{!-- <input id="fileInput" type="file" name="image" className="form-input" /> --}}
+                                </div>
+                                <div>
+                                    <label class='form-text left' for="post-group">Group</label>
+                                    <input type="text" id='post-group' name='post-group' />
+                                </div>
+                                <button type='submit' class='modal-close btn med-green'> Create</button>
+
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
 
+        <div class="card card-round center">
+            <span class="material-icons">
+                add_circle
+            </span>
+            <a class="white black-text btn modal-trigger" href="#modal2">Create a Group</a>
 
-            <script src="/javascript/add-post.js"></script>
+            <!-- Modal Structure -->
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s8 push-s2">
+                            <form class='new-group-form'>
+                                <div>
+                                    <label class='form-text left' for="group-name">Group Name</label>
+                                    <input type="text" id='group-name' name='group-name' />
+                                </div>
+                                <div>
+                                    <label class='form-text left' for="group-color">Group Color</label>
+                                    <input type="text" id='group-color' name='group-color' />
+                                </div>
+
+                                <button type='submit' class='modal-close btn med-green'> Create</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-round center">
+            <span class="material-icons">
+                group_add
+            </span>
+            <a class="white black-text btn modal-trigger" href="#modal3">Join a Group</a>
+
+            <div id="modal3" class="modal">
+                {{> select-group groups}}
+            </div>
+        </div>
+
+        <div class="card card-round center">
+            <span class="material-icons">
+                person_search
+            </span>
+            <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
+
+            <!-- Modal Structure -->
+            <div id="modal4" class="modal">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col s8 push-s2">
+                            <form class='search-user-form'>
+                                <div>
+                                    <label class='form-text left' for="user-name">User Name</label>
+                                </div>
+                                <button type='submit' class='modal-close btn med-green'> Search</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascript/add-post.js"></script>
+<script src="/javascript/join-group.js"></script>
+<script src="/javascript/add-group.js"></script>
