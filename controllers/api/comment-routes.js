@@ -36,7 +36,13 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     attributes: ['id', 'body', 'comment_img', 'user_id', 'post_id', 'created_at', 'updated_at']
-  }).then(dbCommentData => res.json(dbCommentData))
+  }).then(dbCommentData => {
+    if (!dbCommentData[0]) {
+      res.status(404).json({ message: 'No comment found with this id' });
+      return;
+    }
+    res.json(dbCommentData);
+  })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -57,7 +63,13 @@ router.get('/user/:id', (req, res) => {
         attributes: ['first_name']
       }
     ]
-  }).then(dbCommentData => res.json(dbCommentData))
+  }).then(dbCommentData => {
+    if (!dbCommentData[0]) {
+      res.status(404).json({ message: 'No comment found with this id' });
+      return;
+    }
+    res.json(dbCommentData);
+  })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -82,7 +94,13 @@ router.get('/post/:id', (req, res) => {
         attributes: ['title', 'created_at']
       }
     ]
-  }).then(dbCommentData => res.json(dbCommentData))
+  }).then(dbCommentData => {
+    if (!dbCommentData[0]) {
+      res.status(404).json({ message: 'No comment found with this id' });
+      return;
+    }
+    res.json(dbCommentData);
+  })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
