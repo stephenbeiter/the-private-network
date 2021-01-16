@@ -3,6 +3,8 @@
   --dark-green: #2c4741;
   --med-green: #295f3a;
   --dark: #19191f;
+  --nav: rgb(2, 32, 64);
+  --body: rgb(240, 252, 246);
 }
 
 * {
@@ -12,12 +14,13 @@
 body,
 html {
   font-family: "Montserrat:wght@400", sans-serif;
-  background-color: var(--light-green);
+  background-color: var(--body);
   margin: 0;
   padding: 0;
   line-height: 1.2;
   font-size: 1rem;
   border-radius: 0.5rem;
+  color: darkslategrey;
 }
 
 .container {
@@ -34,12 +37,16 @@ html {
   border-radius: 0.5rem;
 }
 
+.card.card-round {
+  border-radius: 2rem !important;
+}
+
 .matrix {
   margin-top: 2rem;
 }
 
 nav {
-  background-color: var(--dark) !important;
+  background-color: var(--nav) !important;
 }
 
 .btn {
@@ -48,23 +55,31 @@ nav {
 }
 .btn.modal-trigger {
   margin: 0.5rem;
-  border-radius: 0.5rem;
   box-shadow: none;
-  border: solid 1px var(--med-green);
+}
+.col > :first-child {
+  margin-top: 3vh;
 }
 .card {
-  margin-top: 8vh;
   border-radius: 0.5rem !important;
 }
 .card .card-action:last-child {
   border-radius: 0.5rem !important;
   border: none;
 }
+.card .card-action a {
+  color: var(--nav) !important;
+  font-weight: 550;
+  text-transform: capitalize !important;
+  padding-left: 3rem;
+}
+
 .card-title span {
   font-weight: 550;
   line-height: 1.8;
-  color: var(--med-green);
+  color: rgb(47, 47, 47);
   padding: 0.5rem;
+  font-size: 1.1rem;
 }
 .card-content.slogan p {
   color: var(--dark);
@@ -94,6 +109,10 @@ nav {
   margin-right: auto;
 }
 
+.round-img {
+  border-radius: 50%;
+}
+
 .card.small {
   height: 220px;
   padding: 3%;
@@ -102,11 +121,17 @@ nav {
 
 nav ul a,
 nav .brand-logo {
-  color: var(--light-green);
-  margin: 0.5rem;
+  color: var(--body);
+  margin-left: 0.5rem;
 }
+
 nav ul a {
   line-height: 4;
+}
+.sidenav.sidenav-fixed {
+  background-color: var(--body);
+  box-shadow: none;
+  margin-top: 20vh;
 }
 .matrix-img {
   background-image: url("/img/matrix-background.png");
@@ -116,9 +141,17 @@ nav ul a {
   height: 100vh;
 }
 
-/* .row:after {
-  display: contents;
-} */
+.modal {
+  min-width: 35%;
+}
+.modal .modal-content {
+  min-height: max-content;
+}
+a .m-icon,
+.desktop {
+  padding: 0.1rem 3rem;
+  font-weight: 450;
+}
 
 #search {
   width: 65%;
