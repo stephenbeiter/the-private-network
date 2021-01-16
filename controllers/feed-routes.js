@@ -9,7 +9,7 @@ router.get("/", async function (req, res, next) {
     where: {
       id: 1,
     },
-    attributes: ["id", "username", "email", "password", "profile_img"],
+    attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
     raw: true,
   });
 

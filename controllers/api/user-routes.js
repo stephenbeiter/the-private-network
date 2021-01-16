@@ -4,7 +4,8 @@ const { User, Group } = require('../../models');
 // Create user
 router.post('/', (req, res) => {
   User.create({
-    username: req.body.username,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
     profile_img: req.body.profile_img
