@@ -43,12 +43,7 @@
             </div>
             <div class='card-content'>
                 {{!-- replace with post content --}}
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut,
-                    nam
-                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt
-                    suscipit
-                    ratione
-                    odit? Voluptatum, eius.</p>
+                <p>{{body}}</p>
             </div>
             {{!-- replace with user's photo if available --}}
             <div class="row">
@@ -96,8 +91,8 @@
                                     <input type="text" id='post-title' name='post-title' />
                                 </div>
                                 <div>
-                                    <label class='form-text left' for="post-content">Content</label>
-                                    <textarea id='post-content' name='post-content'></textarea>
+                                    <label class='form-text left' for="post-body">Content</label>
+                                    <textarea id='post-body' name='post-body'></textarea>
                                 </div>
                                 <div>
                                     <label class='form-text left' for="post-img-url">Image URL</label>

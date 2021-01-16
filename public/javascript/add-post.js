@@ -9,7 +9,7 @@ async function newPostFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector("input[name='post-title']").value;
-  const post_url = document.querySelector("textarea[name='post-content']").value;
+  const body = document.querySelector("textarea[name='post-body']").value;
   const post_img = document.querySelector("input[name='post-img-url']").value;
   const group_id = document.querySelector("input[name='post-group']").value;
 
@@ -18,7 +18,7 @@ async function newPostFormHandler(event) {
     body: JSON.stringify({
       user_id: 1,
       title,
-      post_url,
+      body,
       post_img,
       group_id,
     }),
