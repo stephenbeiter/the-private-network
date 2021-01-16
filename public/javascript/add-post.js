@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
 async function newPostFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector("input[name='post-title']").value;
-  const body = document.querySelector("textarea[name='post-body']").value;
-  const post_img = document.querySelector("input[name='post-img-url']").value;
-  const group_id = document.querySelector("input[name='post-group']").value;
+  const title = document.querySelector("input[name='post-title']").value.trim();
+  const body = document.querySelector("textarea[name='post-body']").value.trim();
+  const post_img = document.querySelector("input[name='post-img-url']").value.trim();
+  const group_id = document.querySelector("input[name='post-group']").value.trim();
 
   const response = await fetch("/api/posts", {
     method: "POST",

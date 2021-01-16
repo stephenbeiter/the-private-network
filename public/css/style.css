@@ -27,14 +27,10 @@ html {
   width: 90%;
 }
 
-#password-signup,
-#username-signup,
-#email-signup,
-#password-login,
-#username-login,
-#email-login {
-  border: solid 1px var(--dark-green);
-  border-radius: 0.5rem;
+.form-input {
+  border: solid 0.1rem var(--nav) !important;
+  border-radius: 0.5rem !important;
+  height: 2.2rem !important;
 }
 
 .card.card-round {
@@ -177,4 +173,13 @@ a .m-icon,
 }
 .dark-green {
   background-color: var(--dark-green) !important;
+}
+
+.dark-blue {
+  background-color: var(--nav) !important;
+}
+
+textarea {
+  border-radius: 0.5rem !important;
+  border: solid 0.1rem var(--nav) !important;
 }
