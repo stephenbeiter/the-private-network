@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const apiRoutes = require("./api");
-const homeRoutes = require("./home-routes");
+const landingRoutes = require("./landing-routes");
 const feedRoutes = require("./feed-routes");
 
 router.use("/api", apiRoutes);
 
 // user-facing routes
-router.use("/", homeRoutes);
+router.use("/", landingRoutes);
 router.use("/feed", feedRoutes);
 
 router.use((req, res) => {

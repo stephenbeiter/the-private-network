@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { Post } = require("../models");
 
 // index route
 router.get("/", (req, res) => res.render("index", { layout: "landing" }));
