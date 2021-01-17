@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Post, User, Group } = require('../../models');
+const { Post, User, Group, Comment } = require('../../models');
 
 // Create post
 router.post('/', (req, res) => {
   Post.create({
     title: req.body.title,
-    post_url: req.body.post_url,
+    body: req.body.body,
     post_img: req.body.post_img,
     user_id: req.body.user_id,
     group_id: req.body.group_id
@@ -21,15 +21,19 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    attributes: ['id', 'title', 'body', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
     include: [
       {
         model: User,
-        attributes: ['first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name']
       },
       {
         model: Group,
-        attributes: ['groupname']
+        attributes: ['id', 'groupname']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'comment_img']
       }
     ]
   }).then(dbPostData => res.json(dbPostData))
@@ -46,15 +50,19 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    attributes: ['id', 'title', 'body', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
     include: [
       {
         model: User,
-        attributes: ['first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name']
       },
       {
         model: Group,
-        attributes: ['groupname']
+        attributes: ['id', 'groupname']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'comment_img']
       }
     ]
   }).then(dbPostData => res.json(dbPostData))
@@ -71,15 +79,19 @@ router.get('/user/:id', (req, res) => {
     where: {
       user_id: req.params.id
     },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    attributes: ['id', 'title', 'body', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
     include: [
       {
         model: User,
-        attributes: ['first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name']
       },
       {
         model: Group,
-        attributes: ['groupname']
+        attributes: ['id', 'groupname']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'comment_img']
       }
     ]
   }).then(dbPostData => res.json(dbPostData))
@@ -96,15 +108,19 @@ router.get('/group/:id', (req, res) => {
     where: {
       group_id: req.params.id
     },
-    attributes: ['id', 'title', 'post_url', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
+    attributes: ['id', 'title', 'body', 'post_img', 'user_id', 'group_id', 'created_at', 'updated_at'],
     include: [
       {
         model: User,
-        attributes: ['first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name']
       },
       {
         model: Group,
-        attributes: ['groupname']
+        attributes: ['id', 'groupname']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'comment_img']
       }
     ]
   }).then(dbPostData => res.json(dbPostData))
