@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col s1 m3 l3">
+    <div class="col s1 m4 l4">
         <div class="card small">
             <div class="card-image center-img round-img">
                 <img class='responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
@@ -17,14 +17,10 @@
         </div>
 
         <div class="card">
-            <div class="card-action">
-                {{!-- Replace with user's group --}}
-
-                <a href='#'>
-                    <div class='m-icon'><span class="material-icons">
-                            groups
-                        </span></div><span class='desktop'>Groups</span>
-                </a>
+            <div class="card-title groups">
+                <span class="material-icons white-text">
+                    groups
+                </span><span class='desktop white-text'>Groups</span>
             </div>
             {{#each groups as |group|}}
             <div class="card-action">
@@ -39,7 +35,8 @@
         <div class='card'>
             <div class="card-title">
                 {{!-- replace with post title --}}
-                <a href='/post/{{id}}'><span>{{title}} {{format_date created_at}}</span></a>
+                <a href='/post/{{id}}'><span>{{title}} by {{'user.first_name'}} {{'user.last_name'}} on
+                        {{format_date created_at}}</span></a>
             </div>
             <div class='card-content'>
                 {{!-- replace with post content --}}
@@ -53,13 +50,39 @@
                     </div>
                 </div>
             </div>
-            <div class="card-action">
-                {{!-- replace with comments --}}
-                <a href='/post/{{id}}'># of comments</a>
-            </div>
-        </div>
-        {{/each}}
+            <div class="card-action z-depth-0">
 
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
+                        <div class="collapsible-body"><span>
+                                <ul>
+                                    {{!-- access the parent object from the child dir --}}
+                                    {{#each ../comments}}
+                                    <li>{{body}} by <span class='user-name'>{{'user.first_name'}}
+                                            {{'user.last_name'}}</span></li>
+                                    {{/each}}
+                                </ul>
+
+
+                            </span></div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="card-action">
+                <div class=" card card-round z-depth-0 comment">
+                    <form class='add-comment-form z-depth-0'>
+                        <div class="input-field">
+                            <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
+                            <input id='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
     <div class="col s1 m3 l3">
         <div class="card card-round">
@@ -184,3 +207,4 @@
 <script src="/javascript/add-post.js"></script>
 <script src="/javascript/join-group.js"></script>
 <script src="/javascript/add-group.js"></script>
+<script src="/javascript/add-comment.js"></script>

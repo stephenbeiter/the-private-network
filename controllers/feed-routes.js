@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User, Group } = require("../models");
+const { Post, User, Group, Comment } = require("../models");
 
 // render User's profile and all posts on homepage
 router.get("/", async function (req, res, next) {
@@ -15,6 +15,7 @@ router.get("/", async function (req, res, next) {
 
   const posts = await Post.findAll({
     attributes: ["id", "title", "body", "post_img", "user_id", "group_id", "created_at"],
+    order: [["created_at", "Desc"]],
     raw: true,
   });
 
@@ -23,7 +24,24 @@ router.get("/", async function (req, res, next) {
     raw: true,
   });
 
-  res.render("feed", { posts, user, groups });
+  const comments = await Comment.findAll({
+    where: {
+      //   update testing
+      // =================
+      post_id: 1,
+    },
+    attributes: ["id", "body", "user_id", "post_id", "created_at", "comment_img"],
+    include: [
+      {
+        model: User,
+        attributes: ["first_name", "last_name"],
+      },
+    ],
+
+    raw: true,
+  });
+  console.log(posts, comments);
+  res.render("feed", { posts, user, groups, comments });
 });
 
 module.exports = router;
