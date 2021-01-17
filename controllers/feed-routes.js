@@ -13,10 +13,27 @@ router.get("/", async function (req, res, next) {
     raw: true,
   });
 
-  const posts = await Post.findAll({
+  const postsRaw = await Post.findAll({
     attributes: ["id", "title", "body", "post_img", "user_id", "group_id", "created_at"],
     order: [["created_at", "Desc"]],
-    raw: true,
+    include: [
+      {
+        model: User,
+        attributes: ["id", "first_name", "last_name"],
+      },
+      {
+        model: Group,
+        attributes: ["id", "groupname"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "body", "comment_img"],
+        include: {
+          model: User,
+          attributes: ["first_name", "last_name"],
+        },
+      },
+    ],
   });
 
   const groups = await Group.findAll({
@@ -24,24 +41,25 @@ router.get("/", async function (req, res, next) {
     raw: true,
   });
 
-  const comments = await Comment.findAll({
-    where: {
-      //   update testing
-      // =================
-      post_id: 1,
-    },
-    attributes: ["id", "body", "user_id", "post_id", "created_at", "comment_img"],
-    include: [
-      {
-        model: User,
-        attributes: ["first_name", "last_name"],
-      },
-    ],
+  //   const comments = await Comment.findAll({
+  //     where: {
+  //       //   update testing
+  //       // =================
+  //       post_id: 1,
+  //     },
+  //     attributes: ["id", "body", "user_id", "post_id", "created_at", "comment_img"],
+  //     include: [
+  //       {
+  //         model: User,
+  //         attributes: ["first_name", "last_name"],
+  //       },
+  //     ],
+  //     raw: true,
+  //   });
 
-    raw: true,
-  });
-  console.log(posts, comments);
-  res.render("feed", { posts, user, groups, comments });
+  const posts = postsRaw.map((post) => post.get({ plain: true }));
+  console.log(posts);
+  res.render("feed", { posts, user, groups });
 });
 
 module.exports = router;

@@ -28,21 +28,21 @@
             </div>
             {{/each}}
         </div>
+
     </div>
     <div class="col s12 m5 l5">
-        {{#each posts as |post|}}
 
+        {{#each posts as |post|}}
         <div class='card'>
             <div class="card-title">
-                {{!-- replace with post title --}}
-                <a href='/post/{{id}}'><span>{{title}} by {{'user.first_name'}} {{'user.last_name'}} on
+                {{!-- replace with post title and id--}}
+                <a href='/group/{{id}}'><span>{{title}} by {{user.first_name}} {{user.last_name}} on
                         {{format_date created_at}}</span></a>
             </div>
             <div class='card-content'>
-                {{!-- replace with post content --}}
                 <p>{{body}}</p>
             </div>
-            {{!-- replace with user's photo if available --}}
+
             <div class="row">
                 <div class="col s-10">
                     <div class="card-image center-img">
@@ -50,26 +50,24 @@
                     </div>
                 </div>
             </div>
-            <div class="card-action z-depth-0">
 
+            {{#if post.comments.length}}
+            <div class="card-action z-depth-0">
                 <ul class="collapsible">
                     <li>
                         <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
                         <div class="collapsible-body"><span>
                                 <ul>
-                                    {{!-- access the parent object from the child dir --}}
-                                    {{#each ../comments}}
-                                    <li>{{body}} by <span class='user-name'>{{'user.first_name'}}
-                                            {{'user.last_name'}}</span></li>
-                                    {{/each}}
+
+                                    {{!-- looping through the comments array --}}
+                                    {{> comment post.comments}}
+
                                 </ul>
-
-
                             </span></div>
                     </li>
                 </ul>
             </div>
-
+            {{/if}}
 
             <div class="card-action">
                 <div class=" card card-round z-depth-0 comment">
@@ -81,8 +79,8 @@
                     </form>
                 </div>
             </div>
-            {{/each}}
         </div>
+        {{/each}}
     </div>
     <div class="col s1 m3 l3">
         <div class="card card-round">
