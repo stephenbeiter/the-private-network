@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Group } = require('../../models');
+const { User, Group, User_Groups } = require('../../models');
 
 // Create user
 router.post('/', (req, res) => {
@@ -110,5 +110,18 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// Add user to group
+// router.post('/addgroup', (req, res) => {
+//   User_Groups.create({
+//     user_id: req.body.user_id,
+//     group_id: req.body.group_id
+//   })
+//     .then(dbUserGroupData => { res.json(dbUserGroupData) })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;
