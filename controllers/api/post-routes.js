@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User, Group } = require("../../models");
+const { Post, User, Group, Comment } = require("../../models");
 
 // Create post
 router.post("/", (req, res) => {
@@ -34,11 +34,15 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["first_name", "last_name"],
+        attributes: ["id", "first_name", "last_name"],
       },
       {
         model: Group,
-        attributes: ["groupname"],
+        attributes: ["id", "groupname"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "body", "comment_img"],
       },
     ],
   })
@@ -69,11 +73,15 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["first_name", "last_name"],
+        attributes: ["id", "first_name", "last_name"],
       },
       {
         model: Group,
-        attributes: ["groupname"],
+        attributes: ["id", "groupname"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "body", "comment_img"],
       },
     ],
   })
@@ -104,11 +112,15 @@ router.get("/user/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["first_name", "last_name"],
+        attributes: ["id", "first_name", "last_name"],
       },
       {
         model: Group,
-        attributes: ["groupname"],
+        attributes: ["id", "groupname"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "body", "comment_img"],
       },
     ],
   })
@@ -139,11 +151,15 @@ router.get("/group/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["first_name", "last_name"],
+        attributes: ["id", "first_name", "last_name"],
       },
       {
         model: Group,
-        attributes: ["groupname"],
+        attributes: ["id", "groupname"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "body", "comment_img"],
       },
     ],
   })
