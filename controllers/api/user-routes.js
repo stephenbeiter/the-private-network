@@ -112,16 +112,23 @@ router.delete('/:id', (req, res) => {
 });
 
 // Add user to group
-// router.post('/addgroup', (req, res) => {
-//   User_Groups.create({
-//     user_id: req.body.user_id,
-//     group_id: req.body.group_id
-//   })
-//     .then(dbUserGroupData => { res.json(dbUserGroupData) })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.post('/addgroup', async function (req, res) {
+  const user = await User.findOne({ where: { id: req.body.user_id } }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id' });
+      return;
+    }
+    return dbUserData;
+  });
+  const group = await Group.findOne({ where: { id: req.body.group_id } }).then(dbGroupData => {
+    if (!dbGroupData) {
+      res.status(404).json({ message: 'No group found with this id' });
+      return;
+    }
+    return dbGroupData;
+  })
+  user.addGroups(group);
+  res.json({ message: 'user added to group' });
+});
 
 module.exports = router;
