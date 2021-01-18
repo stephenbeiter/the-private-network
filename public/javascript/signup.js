@@ -1,3 +1,5 @@
+const profile_img = "";
+
 async function signupFormHandler(event) {
   event.preventDefault();
 
@@ -5,7 +7,7 @@ async function signupFormHandler(event) {
   const lastname = document.querySelector("#last_name-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
-  const profile_img = document.querySelector("#profile_img-signup").value.trim();
+
 
   if (firstname && lastname && email && password) {
     const response = await fetch("api/users", {
@@ -29,4 +31,19 @@ async function signupFormHandler(event) {
   }
 };
 
-document.querySelector(".signup-form").addEventListener("submit", signupFormHandler);
+const myWidget = cloudinary.createUploadWidget({
+  cloudName: 'tpncloudinary',
+  uploadPreset: 'tpnclpreset'
+}, (error, result) => {
+  if (!error && result && result.event === "success") {
+    console.log('Done! Here is the image info: ', result.info);
+    profile_img = result.info.url;
+  }
+}
+);
+
+document.getElementById("upload_widget").addEventListener("click", function () {
+  myWidget.open();
+}, false);
+
+document.querySelector(".buttons").addEventListener("click", signupFormHandler);

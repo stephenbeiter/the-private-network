@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Group, User_Groups } = require('../../models');
+const { User, Group, } = require('../../models');
 
 // Create user
 router.post('/', (req, res) => {
@@ -15,9 +15,8 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.email;
         req.session.loggedIn = true;
-
-        res.json(dbUserData);
       });
+      res.json(dbUserData);
     })
     .catch(err => {
       console.log(err);
