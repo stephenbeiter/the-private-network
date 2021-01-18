@@ -44,6 +44,7 @@ html {
 
 .material-icons {
   margin: 0 10px;
+  color: var(--nav);
 }
 
 .matrix {
@@ -162,10 +163,18 @@ nav ul a {
   width: 65%;
   border: none;
   padding-left: 2.4rem;
-  max-height: 48px;
+  max-height: 20px;
 }
 
-#add-comment {
+.input-field > label {
+  transform: none;
+}
+
+#groups {
+  display: inline-block;
+}
+
+.add-comment {
   width: 65%;
   border: none;
   padding-left: 2.4rem;

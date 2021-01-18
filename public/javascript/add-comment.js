@@ -7,15 +7,17 @@ async function newCommentFromHandler(event) {
   event.preventDefault();
 
   const body = document.querySelector('input[name="add-comment"]').value.trim();
+  const post_id = document.querySelector(".comment-text").id.split("-")[1];
 
   const response = await fetch("/api/comments", {
     method: "POST",
     body: JSON.stringify({
       body,
-      //   remove hard coding
+      //   ====================
+      //   remove hardcoding
       // ======================
-      user_id: 1,
-      post_id: 2,
+      user_id: 2,
+      post_id,
     }),
     headers: {
       "Content-Type": "application/json",

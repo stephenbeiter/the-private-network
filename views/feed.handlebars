@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col s1 m4 l4">
+        {{#if user}}
         <div class="card small">
             <div class="card-image center-img round-img">
                 <img class='responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
@@ -15,7 +16,9 @@
                     </span>My Posts</a>
             </div>
         </div>
+        {{/if}}
 
+        {{#if groups}}
         <div class="card">
             <div class="card-title groups">
                 <span class="material-icons white-text">
@@ -28,6 +31,7 @@
             </div>
             {{/each}}
         </div>
+        {{/if}}
 
     </div>
     <div class="col s12 m5 l5">
@@ -36,7 +40,7 @@
         <div class='card'>
             <div class="card-title">
                 {{!-- replace with post title and id--}}
-                <a href='/group/{{id}}'><span>{{title}} by {{user.first_name}} {{user.last_name}} on
+                <a href='#'><span>{{title}} by {{user.first_name}} {{user.last_name}} on
                         {{format_date created_at}}</span></a>
             </div>
             <div class='card-content'>
@@ -74,7 +78,7 @@
                     <form class='add-comment-form z-depth-0'>
                         <div class="input-field">
                             <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
-                            <input id='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
+                            <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
                         </div>
                     </form>
                 </div>
@@ -85,10 +89,10 @@
     <div class="col s1 m3 l3">
         <div class="card card-round">
             <div class="card-title search-card">
-                <form action='feed/search' class='search-form'>
+                <form action='/feed/search' class='search-form'>
                     <div class="input-field">
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <input id='search' placeholder='Search' type='search' name='term' required>
+                        <input id='search' placeholder='Search' type='search' name='term' />
                     </div>
                 </form>
             </div>
@@ -126,7 +130,7 @@
                                     <label class='form-text left' for="post-group">Group</label>
                                     <input type="text" class='form-input' id='post-group' name='post-group' />
                                 </div>
-                                <button type='submit' class='modal-close btn med-green'> Create</button>
+                                <button type='submit' class='modal-close btn dark-blue'> Create</button>
 
                             </form>
                         </div>
@@ -134,7 +138,7 @@
                 </div>
             </div>
         </div>
-
+        {{#if groups}}
         <div class="card card-round center">
             <span class="material-icons">
                 add_circle
@@ -156,7 +160,7 @@
                                     <input type="text" class='form-input' id='group-color' name='group-color' />
                                 </div>
 
-                                <button type='submit' class='modal-close btn med-green'> Create</button>
+                                <button type='submit' class='modal-close btn dark-blue'> Create</button>
 
                             </form>
                         </div>
@@ -164,6 +168,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="card card-round center">
             <span class="material-icons">
@@ -174,35 +179,40 @@
             <div id="modal3" class="modal">
                 {{> select-group groups}}
             </div>
-        </div>
 
-        <div class="card card-round center">
-            <span class="material-icons">
-                person_search
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
+            {{/if}}
 
-            <!-- Modal Structure -->
-            <div id="modal4" class="modal">
-                <div class="modal-content">
-                    <div class="row">
-                        <div class="col s8 push-s2">
-                            <form class='search-user-form'>
-                                <div>
-                                    <label class='form-text left' for="user-name">User Name</label>
-                                </div>
-                                <button type='submit' class='modal-close btn med-green'> Search</button>
+            {{#if user}}
+            <div class="card card-round center">
+                <span class="material-icons">
+                    person_search
+                </span>
+                <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
 
-                            </form>
+                <!-- Modal Structure -->
+                <div id="modal4" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 push-s2">
+                                <form class='search-user-form'>
+                                    <div>
+                                        <label class='form-text left' for="user-name">User Name</label>
+                                    </div>
+                                    <button type='submit' class='modal-close btn dark-blue'> Search</button>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
-</div>
 
-<script src="/javascript/add-post.js"></script>
-<script src="/javascript/join-group.js"></script>
-<script src="/javascript/add-group.js"></script>
-<script src="/javascript/add-comment.js"></script>
+    <script src="/javascript/add-post.js"></script>
+    <script src="/javascript/add-comment.js"></script>
+    {{#if groups}}
+    <script src="/javascript/join-group.js"></script>
+    <script src="/javascript/add-group.js"></script>
+    {{/if}}
