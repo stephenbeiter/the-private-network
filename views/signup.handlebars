@@ -8,20 +8,30 @@
                 <div class="card-content">
                     <form class='signup-form'>
                         <div>
-                            <label class="form-text" for='username-signup'>Username:</label>
-                            <input type='text' id='username-signup' />
+                            <label class="form-text" for='first_name-signup'>First Name:</label>
+                            <input type='text' class='form-input' id='first_name-signup' />
+                        </div>
+                        <div>
+                            <label class="form-text" for='last_name-signup'>Last Name:</label>
+                            <input type='text' class='form-input' id='last_name-signup' />
                         </div>
                         <div>
                             <label class="form-text" for='email-signup'>Email:</label>
-                            <input type='text' id='email-signup' />
+                            <input type='text' class='form-input' id='email-signup' />
                         </div>
                         <div>
                             <label class='form-text' for='password-signup'>Password</label>
-                            <input type='text' id='password-signup' />
+                            <input type='text' class='form-input' id='password-signup' />
+                        </div>
+                        {{!-- Replace with image upload --}}
+                        {{!-- ========================== --}}
+                        <div>
+                            <label class='form-text' for='profile_img-signup'>Profile Image</label>
+                            <input type='text' class='form-input' id='profile_img-signup' />
                         </div>
                         <div class='card-bottom center'>
                             <div class='buttons'>
-                                <button class="btn med-green" type="submit" name="action">Join
+                                <button class="btn dark-blue" type="submit" name="action">Join
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>

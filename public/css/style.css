@@ -3,7 +3,7 @@
   --dark-green: #2c4741;
   --med-green: #295f3a;
   --dark: #19191f;
-  --nav: rgb(2, 32, 64);
+  --nav: rgb(4, 24, 49);
   --body: rgb(240, 252, 246);
 }
 
@@ -22,23 +22,29 @@ html {
   border-radius: 0.5rem;
   color: darkslategrey;
 }
-
+.comment {
+  border: solid 0.1rem var(--nav);
+}
 .container {
   width: 90%;
 }
 
-#password-signup,
-#username-signup,
-#email-signup,
-#password-login,
-#username-login,
-#email-login {
-  border: solid 1px var(--dark-green);
-  border-radius: 0.5rem;
+.form-input {
+  border: solid 0.1rem var(--nav) !important;
+  border-radius: 0.5rem !important;
+  height: 2.2rem !important;
 }
 
 .card.card-round {
   border-radius: 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.material-icons {
+  margin: 0 10px;
+  color: var(--nav);
 }
 
 .matrix {
@@ -147,17 +153,33 @@ nav ul a {
 .modal .modal-content {
   min-height: max-content;
 }
-a .m-icon,
-.desktop {
-  padding: 0.1rem 3rem;
-  font-weight: 450;
+.card-title.groups {
+  background-color: rgba(4, 24, 49, 0.5);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 #search {
   width: 65%;
   border: none;
-  padding: 5% 15%;
+  padding-left: 2.4rem;
+  max-height: 20px;
+}
+
+.input-field > label {
+  transform: none;
+}
+
+#groups {
+  display: inline-block;
+}
+
+.add-comment {
+  width: 65%;
+  border: none;
+  padding-left: 2.4rem;
   max-height: 24px;
+  /* margin: 0.5rem 1rem; */
 }
 .search-card {
   border-radius: 1rem !important;
@@ -177,4 +199,18 @@ a .m-icon,
 }
 .dark-green {
   background-color: var(--dark-green) !important;
+}
+
+.dark-blue {
+  background-color: var(--nav) !important;
+}
+
+textarea {
+  border-radius: 0.5rem !important;
+  border: solid 0.1rem var(--nav) !important;
+}
+
+.user-name {
+  font-size: smaller;
+  font-weight: bolder;
 }

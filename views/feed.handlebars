@@ -1,13 +1,14 @@
 <div class="row">
-    <div class="col s1 m3 l3">
+    <div class="col s1 m4 l4">
+        {{#if user}}
         <div class="card small">
             <div class="card-image center-img round-img">
-                <img class='responsive-img ' {{!-- Replace with user's image --}}
-                    src='https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805__340.png'>
+                <img class='responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
+
             </div>
             <div class="card-title">
-                {{!-- Replace with user's name --}}
-                <span> {{user.username}}</span>
+
+                <span> {{user.first_name}} {{user.last_name}}</span>
             </div>
             <div class="card-action">
                 <a href='#'><span class="material-icons">
@@ -15,16 +16,14 @@
                     </span>My Posts</a>
             </div>
         </div>
+        {{/if}}
 
+        {{#if groups}}
         <div class="card">
-            <div class="card-action">
-                {{!-- Replace with user's group --}}
-
-                <a href='#'>
-                    <div class='m-icon'><span class="material-icons">
-                            groups
-                        </span></div><span class='desktop'>Groups</span>
-                </a>
+            <div class="card-title groups">
+                <span class="material-icons white-text">
+                    groups
+                </span><span class='desktop white-text'>Groups</span>
             </div>
             {{#each groups as |group|}}
             <div class="card-action">
@@ -32,25 +31,22 @@
             </div>
             {{/each}}
         </div>
+        {{/if}}
+
     </div>
     <div class="col s12 m5 l5">
-        {{#each posts as |post|}}
 
+        {{#each posts as |post|}}
         <div class='card'>
             <div class="card-title">
-                {{!-- replace with post title --}}
-                <a href='/post/{{id}}'><span>{{title}} {{format_date created_at}}</span></a>
+                {{!-- replace with post title and id--}}
+                <a href='#'><span>{{title}} by {{user.first_name}} {{user.last_name}} on
+                        {{format_date created_at}}</span></a>
             </div>
             <div class='card-content'>
-                {{!-- replace with post content --}}
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque facere dignissimos aut,
-                    nam
-                    voluptatem aliquam id dolorem in a alias, enim doloribus perferendis natus deserunt
-                    suscipit
-                    ratione
-                    odit? Voluptatum, eius.</p>
+                <p>{{body}}</p>
             </div>
-            {{!-- replace with user's photo if available --}}
+
             <div class="row">
                 <div class="col s-10">
                     <div class="card-image center-img">
@@ -58,21 +54,45 @@
                     </div>
                 </div>
             </div>
+
+            {{#if post.comments.length}}
+            <div class="card-action z-depth-0">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
+                        <div class="collapsible-body"><span>
+                                <ul>
+
+                                    {{!-- looping through the comments array --}}
+                                    {{> comment post.comments}}
+
+                                </ul>
+                            </span></div>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
+
             <div class="card-action">
-                {{!-- replace with comments --}}
-                <a href='/post/{{id}}'># of comments</a>
+                <div class=" card card-round z-depth-0 comment">
+                    <form class='add-comment-form z-depth-0'>
+                        <div class="input-field">
+                            <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
+                            <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         {{/each}}
-
     </div>
     <div class="col s1 m3 l3">
         <div class="card card-round">
             <div class="card-title search-card">
-                <form action='feed/search' class='search-form'>
+                <form action='/feed/search' class='search-form'>
                     <div class="input-field">
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <input id='search' placeholder='Search' type='search' name='term' required>
+                        <input id='search' placeholder='Search' type='search' name='term' />
                     </div>
                 </form>
             </div>
@@ -93,24 +113,24 @@
                             <form class='new-post-form'>
                                 <div>
                                     <label class='form-text left' for="post-title">Title</label>
-                                    <input type="text" id='post-title' name='post-title' />
+                                    <input type="text" class='form-input' id='post-title' name='post-title' />
                                 </div>
                                 <div>
-                                    <label class='form-text left' for="post-content">Content</label>
-                                    <textarea id='post-content' name='post-content'></textarea>
+                                    <label class='form-text left' for="post-body">Content</label>
+                                    <textarea id='post-body' name='post-body'></textarea>
                                 </div>
                                 <div>
                                     <label class='form-text left' for="post-img-url">Image URL</label>
-                                    <input type="text" id='post-img-url' name='post-img-url' />
+                                    <input type="text" class='form-input' id='post-img-url' name='post-img-url' />
                                     {{!-- enable once Cloudinary is implemented --}}
                                     {{!-- =========================================== --}}
                                     {{!-- <input id="fileInput" type="file" name="image" className="form-input" /> --}}
                                 </div>
                                 <div>
                                     <label class='form-text left' for="post-group">Group</label>
-                                    <input type="text" id='post-group' name='post-group' />
+                                    <input type="text" class='form-input' id='post-group' name='post-group' />
                                 </div>
-                                <button type='submit' class='modal-close btn med-green'> Create</button>
+                                <button type='submit' class='modal-close btn dark-blue'> Create</button>
 
                             </form>
                         </div>
@@ -118,7 +138,7 @@
                 </div>
             </div>
         </div>
-
+        {{#if groups}}
         <div class="card card-round center">
             <span class="material-icons">
                 add_circle
@@ -133,14 +153,14 @@
                             <form class='new-group-form'>
                                 <div>
                                     <label class='form-text left' for="group-name">Group Name</label>
-                                    <input type="text" id='group-name' name='group-name' />
+                                    <input type="text" class='form-input' id='group-name' name='group-name' />
                                 </div>
                                 <div>
                                     <label class='form-text left' for="group-color">Group Color</label>
-                                    <input type="text" id='group-color' name='group-color' />
+                                    <input type="text" class='form-input' id='group-color' name='group-color' />
                                 </div>
 
-                                <button type='submit' class='modal-close btn med-green'> Create</button>
+                                <button type='submit' class='modal-close btn dark-blue'> Create</button>
 
                             </form>
                         </div>
@@ -148,6 +168,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="card card-round center">
             <span class="material-icons">
@@ -158,34 +179,40 @@
             <div id="modal3" class="modal">
                 {{> select-group groups}}
             </div>
-        </div>
 
-        <div class="card card-round center">
-            <span class="material-icons">
-                person_search
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
+            {{/if}}
 
-            <!-- Modal Structure -->
-            <div id="modal4" class="modal">
-                <div class="modal-content">
-                    <div class="row">
-                        <div class="col s8 push-s2">
-                            <form class='search-user-form'>
-                                <div>
-                                    <label class='form-text left' for="user-name">User Name</label>
-                                </div>
-                                <button type='submit' class='modal-close btn med-green'> Search</button>
+            {{#if user}}
+            <div class="card card-round center">
+                <span class="material-icons">
+                    person_search
+                </span>
+                <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
 
-                            </form>
+                <!-- Modal Structure -->
+                <div id="modal4" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s8 push-s2">
+                                <form class='search-user-form'>
+                                    <div>
+                                        <label class='form-text left' for="user-name">User Name</label>
+                                    </div>
+                                    <button type='submit' class='modal-close btn dark-blue'> Search</button>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
-</div>
 
-<script src="/javascript/add-post.js"></script>
-<script src="/javascript/join-group.js"></script>
-<script src="/javascript/add-group.js"></script>
+    <script src="/javascript/add-post.js"></script>
+    <script src="/javascript/add-comment.js"></script>
+    {{#if groups}}
+    <script src="/javascript/join-group.js"></script>
+    <script src="/javascript/add-group.js"></script>
+    {{/if}}
