@@ -8,8 +8,12 @@ const Op = Sequelize.Op;
 router.get("/", async function (req, res) {
   const user = await User.findOne({
     where: {
+<<<<<<< HEAD
       // remove hardcoding
       id: 1,
+=======
+      id: req.session.id,
+>>>>>>> feature/sessions
     },
     attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
     raw: true,
