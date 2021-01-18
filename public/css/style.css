@@ -28,13 +28,14 @@ html {
 }
 
 #password-signup,
-#username-signup,
+#firstname-signup,
+#lastname-signup,
 #email-signup,
 #password-login,
-#username-login,
 #email-login {
   border: solid 1px var(--dark-green);
   border-radius: 0.5rem;
+  padding-left: 10px ;
 }
 
 .card.card-round {

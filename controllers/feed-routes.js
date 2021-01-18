@@ -7,7 +7,7 @@ router.get("/", async function (req, res, next) {
   // ================================
   const user = await User.findOne({
     where: {
-      id: 1,
+      id: req.session.id,
     },
     attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
     raw: true,
