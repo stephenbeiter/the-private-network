@@ -29,8 +29,7 @@ const postAttributes = ["id", "title", "body", "post_img", "user_id", "group_id"
 router.get("/", async function (req, res) {
   const user = await User.findOne({
     where: {
-      // remove hardcoding
-      id: 2,
+      id: req.session.user_id,
     },
     attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
     raw: true,

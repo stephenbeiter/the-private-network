@@ -2,38 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <title>The Private Network</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>The Private Network</title>
 </head>
 
 <body>
-    <header>
-        <div class="navbar-fixed">
-            <nav>
-                <div class="nav-wrapper">
-                    <div class="brand-logo">The Private Network</div>
-                    <ul class="right">
-                        <li>
-                            <a href="/feed">Home</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
+  <header>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="brand-logo"><a href="/">The Private Network</a></div>
+          <ul class="right">
+            <li>
+              <a href="/feed">Home</a>
+            </li>
+            <li>
+              <a href="/login" id="logout">Logout</a>
+            </li>
+          </ul>
         </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 
-    <main class='container'>
-        {{{ body }}}
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <main class='container'>
+    {{{ body }}}
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/javascript/logout.js"></script>
 </body>
 
 </html>
