@@ -1,20 +1,21 @@
 <div class="row">
     <div class="col s1 m4 l4">
         {{#if user}}
-        <div class="card small">
-            <div class="card-image center-img round-img">
-                <img class='responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
+        <div class="card horizontal">
+            <div class="card-image center-img">
+                <img class='profile responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
 
             </div>
-            <div class="card-title">
+            <div class="card-title horizontal-content">
 
-                <span> {{user.first_name}} {{user.last_name}}</span>
+                <span> <a href='/feed/profile/{{user.id}}'>{{user.first_name}} {{user.last_name}}</span></a>
+                {{!-- <br><br> --}}
+                <span><a href='/feed/users/{{user.id}}'><span class="material-icons">
+                            article
+                        </span>My Posts</a>
+                </span>
             </div>
-            <div class="card-action">
-                <a href='#'><span class="material-icons">
-                        article
-                    </span>My Posts</a>
-            </div>
+
         </div>
         {{/if}}
 
@@ -27,7 +28,7 @@
             </div>
             {{#each groups as |group|}}
             <div class="card-action">
-                <a href='#'><span>{{groupname}}</span></a>
+                <a href='/feed/groups/{{id}}'><span>{{groupname}}</span></a>
             </div>
             {{/each}}
         </div>
@@ -40,8 +41,8 @@
         <div class='card'>
             <div class="card-title">
                 {{!-- replace with post title and id--}}
-                <a href='#'><span>{{title}} by {{user.first_name}} {{user.last_name}} on
-                        {{format_date created_at}}</span></a>
+                <span>{{title}} by <a href='/feed/profile/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a> on
+                    {{format_date created_at}}</span>
             </div>
             <div class='card-content'>
                 <p>{{body}}</p>
