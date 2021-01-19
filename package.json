@@ -33,6 +33,7 @@
   "homepage": "https://github.com/hcs847/the-private-network#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "cloudinary-core": "^2.11.3",
     "connect-session-sequelize": "^7.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

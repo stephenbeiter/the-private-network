@@ -11,11 +11,6 @@ router.get("/signup", (req, res) => {
 
 // login route
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/feed');
-    return;
-  }
-
   res.render("login", { layout: "landing" });
 });
 
