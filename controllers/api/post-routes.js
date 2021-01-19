@@ -7,7 +7,7 @@ router.post("/", (req, res) => {
     title: req.body.title,
     body: req.body.body,
     post_img: req.body.post_img,
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     group_id: req.body.group_id,
   })
     .then((dbPostData) => res.json(dbPostData))

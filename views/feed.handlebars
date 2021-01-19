@@ -47,7 +47,7 @@
         {{/if}}
 
         {{#each posts as |post|}}
-        <div class='card'>
+        <div class='card comment-post-id' id='comment-post-{{id}}'>
             <div class="card-title center">
 
                 <h4>{{title}} by <a href='/feed/profile/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a> on
@@ -72,10 +72,8 @@
                         <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
                         <div class="collapsible-body"><span>
                                 <ul>
-
                                     {{!-- looping through the comments array --}}
                                     {{> comment post.comments}}
-
                                 </ul>
                             </span></div>
                     </li>
@@ -84,9 +82,9 @@
             {{/if}}
 
             <div class="card-action">
-                <div class=" card card-round z-depth-0 comment">
+                <div class="card card-round z-depth-0 comment">
                     <form class='add-comment-form z-depth-0'>
-                        <div class="input-field">
+                        <div class=" input-field">
                             <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
                             <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
                         </div>
