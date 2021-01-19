@@ -37,6 +37,14 @@ html {
   height: 2.2rem !important;
 }
 
+.img-upload {
+  width: 100%;
+  background-color: var(--light-green) !important;
+  color: var(--nav) !important;
+  border: solid 0.1rem var(--nav) !important;
+  font-weight: 500 !important;
+}
+
 .card.card-round {
   border-radius: 2rem !important;
   display: flex;
@@ -59,7 +67,8 @@ nav {
 
 .btn {
   margin-top: 1.2rem;
-  border-radius: 0.3rem;
+  border-radius: 0.3rem !important;
+  padding: 0 16px !important;
 }
 .btn.modal-trigger {
   margin: 0.5rem;
@@ -143,7 +152,6 @@ a.profile {
 img.responsive-img.profile {
   max-width: 200px;
   max-height: 200px;
-  width: 55%;
 }
 
 .center-img {
@@ -203,6 +211,9 @@ nav ul a {
 #modal4 {
   max-width: 30%;
 }
+#modal1 {
+  max-height: 80%;
+}
 .modal .modal-content {
   min-height: max-content;
 }
@@ -221,8 +232,18 @@ nav ul a {
   transform: none;
 }
 
-#groups {
+#join-groups,
+#post-groups {
   display: inline-block;
+  border-radius: 0.5rem;
+  width: 50%;
+  background-color: transparent;
+  border: solid 0.1rem var(--nav) !important;
+}
+
+#post-groups {
+  width: 100%;
+  display: block;
 }
 
 .add-comment {

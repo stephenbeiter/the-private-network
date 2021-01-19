@@ -5,8 +5,8 @@
             <form class='join-group-form'>
 
                 <label>Choose a group</label>
-                <select id='groups'>
-
+                <select id='join-groups'>
+                    <option value="" disabled selected>Select a group</option>
                     {{#each this}}
                     <option id='group-{{id}}' class="group-name" value='{{id}}'>{{groupname}}</option>
                     {{/each}}
@@ -19,5 +19,4 @@
 
 
     </div>
-</div>
 </div>
