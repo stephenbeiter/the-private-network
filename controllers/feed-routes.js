@@ -47,11 +47,11 @@ router.get("/", async function (req, res) {
   });
 
   const posts = postsRaw.map((post) => post.get({ plain: true }));
-  console.log(posts[0].comments);
-  res.render("feed", { posts, user, groups });
+
+  res.render("feed", { posts, user, groups, feed: true });
 });
 
-router.get("/search", async function (req, res) {
+router.get("/search/post", async function (req, res) {
   const { term } = req.query;
 
   const filteredPostsRaw = await Post.findAll({
@@ -70,6 +70,31 @@ router.get("/search", async function (req, res) {
   res.render("feed", { posts });
 });
 
+router.get("/search/user", async function (req, res) {
+  const { username } = req.query;
+
+  const user = await User.findOne({
+    where: {
+      [Op.or]: [
+        {
+          first_name: {
+            [Op.like]: `%${username.toLowerCase()}%`,
+          },
+        },
+        {
+          last_name: {
+            [Op.like]: `%${username.toLowerCase()}%`,
+          },
+        },
+      ],
+    },
+    attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
+    raw: true,
+  });
+
+  res.render("profile", { user });
+});
+
 router.get("/groups/:id", async function (req, res) {
   const filteredPostsRaw = await Post.findAll({
     where: {
@@ -82,7 +107,7 @@ router.get("/groups/:id", async function (req, res) {
 
   const posts = filteredPostsRaw.map((post) => post.get({ plain: true }));
 
-  res.render("feed", { posts });
+  res.render("feed", { posts, groupPage: true });
 });
 
 router.get("/users/:id", async function (req, res) {
@@ -97,7 +122,7 @@ router.get("/users/:id", async function (req, res) {
 
   const posts = filteredPostsRaw.map((post) => post.get({ plain: true }));
 
-  res.render("feed", { posts });
+  res.render("feed", { posts, userPosts: true });
 });
 router.get("/profile/:id", async function (req, res) {
   const filteredPostsRaw = await Post.findAll({
@@ -111,7 +136,6 @@ router.get("/profile/:id", async function (req, res) {
 
   const user = await User.findOne({
     where: {
-      // remove hardcoding
       id: req.params.id,
     },
     attributes: ["id", "first_name", "last_name", "email", "password", "profile_img"],
@@ -120,7 +144,7 @@ router.get("/profile/:id", async function (req, res) {
 
   const posts = filteredPostsRaw.map((post) => post.get({ plain: true }));
 
-  res.render("profile", { posts, user });
+  res.render("profile", { posts, user, profile: true });
 });
 
 module.exports = router;

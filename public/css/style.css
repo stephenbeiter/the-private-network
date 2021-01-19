@@ -24,6 +24,8 @@ html {
 }
 .comment {
   border: solid 0.1rem var(--nav);
+  padding: 2% 1%;
+  max-height: 42px;
 }
 .container {
   width: 90%;
@@ -73,23 +75,38 @@ nav {
   border-radius: 0.5rem !important;
   border: none;
 }
-.card .card-action a {
-  color: var(--nav) !important;
+.card .card-action a,
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: var(--nav);
   font-weight: 550;
   text-transform: capitalize !important;
-  padding-left: 3rem;
+  padding-left: 2.5rem;
+  padding-top: 0;
+}
+
+.card .card-content {
+  padding: 0 0.5rem;
+}
+
+.collapsible {
+  border: none;
 }
 a {
   color: var(--nav);
-  font-weight: 900;
+  font-weight: 900 !important;
 }
 
-.card-title span {
+a:hover {
+  color: rgb(209, 64, 20) !important;
+}
+
+.card-title span,
+.card-title > h4 {
   font-weight: 500;
   line-height: 1.8;
   color: rgb(43, 42, 42);
   padding: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 18px;
 }
 .card-content.slogan p {
   color: var(--dark);
@@ -112,6 +129,9 @@ a {
 }
 .card.profile .card-image {
   padding-top: 8vh;
+}
+.card-image {
+  margin: 0.5rem;
 }
 
 a.profile {
@@ -143,6 +163,9 @@ img.responsive-img.profile {
   display: flex;
 }
 
+.landing-page {
+  background-color: var(--dark) !important;
+}
 nav ul a,
 nav .brand-logo {
   color: var(--body);
@@ -152,13 +175,20 @@ nav .brand-logo {
 nav ul a {
   line-height: 4;
 }
+
+.page-header {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--nav);
+  padding-top: 3vh;
+}
 .sidenav.sidenav-fixed {
   background-color: var(--body);
   box-shadow: none;
   margin-top: 20vh;
 }
 .matrix-img {
-  background-image: url("/img/matrix-background.png");
+  background-image: url("/img/sage-background.png");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -167,6 +197,7 @@ nav ul a {
 
 .modal {
   min-width: 35%;
+  border-radius: 1rem;
 }
 
 #modal4 {
@@ -213,7 +244,10 @@ input[type="text"]:not(.browser-default) {
 
 .slogan {
   background-color: transparent;
-  margin-top: 16vw;
+  margin-top: 8vw !important;
+  display: flex;
+  color: var(--dark);
+  font-size: x-large;
 }
 
 #search {
