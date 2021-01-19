@@ -8,6 +8,7 @@ const myWidget = cloudinary.createUploadWidget(
   (error, result) => {
     if (!error && result && result.event === "success") {
       console.log("Done! Here is the image info: ", result.info);
+      profile_img = result.info.url;
     }
     if (error) {
       console.log(error);
