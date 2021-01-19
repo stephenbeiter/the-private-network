@@ -7,8 +7,6 @@ async function joinGroupHandler(event) {
   const response = await fetch("/api/users/addgroup", {
     method: "POST",
     body: JSON.stringify({
-      // remove hardcoding
-      user_id: 1,
       group_id,
     }),
     headers: {

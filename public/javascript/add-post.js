@@ -16,7 +16,6 @@ async function newPostFormHandler(event) {
   const response = await fetch("/api/posts", {
     method: "POST",
     body: JSON.stringify({
-      user_id: 1,
       title,
       body,
       post_img,
