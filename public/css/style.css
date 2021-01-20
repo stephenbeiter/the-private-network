@@ -37,6 +37,14 @@ html {
   height: 2.2rem !important;
 }
 
+.img-upload {
+  width: 100%;
+  background-color: var(--light-green) !important;
+  color: var(--nav) !important;
+  border: solid 0.1rem var(--nav) !important;
+  font-weight: 500 !important;
+}
+
 .card.card-round {
   border-radius: 2rem !important;
   display: flex;
@@ -49,17 +57,14 @@ html {
   color: var(--nav);
 }
 
-.matrix {
-  margin-top: 2rem;
-}
-
 nav {
   background-color: var(--nav) !important;
 }
 
 .btn {
   margin-top: 1.2rem;
-  border-radius: 0.3rem;
+  border-radius: 0.3rem !important;
+  padding: 0 16px !important;
 }
 .btn.modal-trigger {
   margin: 0.5rem;
@@ -106,7 +111,7 @@ a:hover {
   line-height: 1.8;
   color: rgb(43, 42, 42);
   padding: 0.5rem;
-  font-size: 18px;
+  font-size: 16px;
 }
 .card-content.slogan p {
   color: var(--dark);
@@ -143,10 +148,10 @@ a.profile {
 img.responsive-img.profile {
   max-width: 200px;
   max-height: 200px;
-  width: 55%;
+  padding: 0.2rem;
 }
 
-.center-img {
+.center-card {
   width: 75%;
   display: block;
   margin-left: auto;
@@ -187,12 +192,27 @@ nav ul a {
   box-shadow: none;
   margin-top: 20vh;
 }
+
+.matrix {
+  font-weight: 600;
+  font-size: 3.6rem;
+}
+
+.welcome {
+  font-size: 3rem;
+  font-family: monospace;
+}
+
+.matrix-background {
+  background-image: linear-gradient(5deg, #3c5a51 20%, #46796f 33%);
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+}
 .matrix-img {
-  background-image: url("/img/sage-background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100vh;
+  margin-top: 20% !important;
+  max-width: 80%;
+  height: auto;
 }
 
 .modal {
@@ -202,6 +222,9 @@ nav ul a {
 
 #modal4 {
   max-width: 30%;
+}
+#modal1 {
+  max-height: 80%;
 }
 .modal .modal-content {
   min-height: max-content;
@@ -216,13 +239,24 @@ nav ul a {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-right: 2rem;
 }
 .input-field > label {
   transform: none;
 }
 
-#groups {
+#join-groups,
+#post-groups {
   display: inline-block;
+  border-radius: 0.5rem;
+  width: 50%;
+  background-color: transparent;
+  border: solid 0.1rem var(--nav) !important;
+}
+
+#post-groups {
+  width: 100%;
+  display: block;
 }
 
 .add-comment {
@@ -244,7 +278,7 @@ input[type="text"]:not(.browser-default) {
 
 .slogan {
   background-color: transparent;
-  margin-top: 8vw !important;
+  margin-top: 45% !important;
   display: flex;
   color: var(--dark);
   font-size: x-large;

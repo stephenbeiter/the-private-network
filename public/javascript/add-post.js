@@ -4,14 +4,31 @@ document.addEventListener("DOMContentLoaded", function () {
   var instances = M.Modal.init(elems);
 });
 
+let post_img = "";
+
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: "tpncloudinary",
+    uploadPreset: "tpnclpreset",
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log("Done! Here is the image info: ", result.info);
+      post_img = result.info.url;
+    }
+    if (error) {
+      console.log(error);
+    }
+  }
+);
+
 // capture input for creating a new post form
 async function newPostFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector("input[name='post-title']").value.trim();
   const body = document.querySelector("textarea[name='post-body']").value.trim();
-  const post_img = document.querySelector("input[name='post-img-url']").value.trim();
-  const group_id = document.querySelector("input[name='post-group']").value.trim();
+  const group_id = document.querySelector("#post-groups").value.trim();
 
   const response = await fetch("/api/posts", {
     method: "POST",
@@ -32,5 +49,14 @@ async function newPostFormHandler(event) {
     alert(response.statusText);
   }
 }
+
+document.getElementById("upload_widget").addEventListener(
+  "click",
+  function (event) {
+    myWidget.open();
+    event.preventDefault();
+  },
+  false
+);
 
 document.querySelector(".new-post-form").addEventListener("submit", newPostFormHandler);
