@@ -37,6 +37,10 @@ html {
   height: 2.2rem !important;
 }
 
+.signup-form div .form-input {
+  padding-left: 0.5rem;
+}
+
 .img-upload {
   width: 100%;
   background-color: var(--light-green) !important;
@@ -282,6 +286,9 @@ nav ul a {
   padding-left: 2.4rem !important;
   max-height: 24px;
   /* margin: 0.5rem 1rem; */
+}
+.add-comment-form div {
+  margin-top: 1.5rem;
 }
 .search-card {
   border-radius: 1rem !important;
