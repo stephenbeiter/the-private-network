@@ -11,6 +11,10 @@ router.get("/signup", (req, res) => {
 
 // login route
 router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
   res.render("login", { layout: "landing" });
 });
 
@@ -26,9 +30,9 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    // const validPassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
-    if (dbUserData.password !== req.body.password) {
+    if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }

@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
     last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
-    profile_img: req.body.profile_img,
+    profile_img: req.body.profile_img
   })
     .then((dbUserData) => {
       req.session.save(() => {
@@ -27,6 +27,7 @@ router.post("/", (req, res) => {
 // Get all users
 router.get("/", (req, res) => {
   User.findAll({
+    attributes: { exclude: ['password'] },
     include: [
       {
         model: Group,
@@ -45,6 +46,7 @@ router.get("/", (req, res) => {
 // Get single user
 router.get("/:id", (req, res) => {
   User.findOne({
+    attributes: { exclude: ['password'] },
     where: { id: req.params.id },
   })
     .then((dbUserData) => {
