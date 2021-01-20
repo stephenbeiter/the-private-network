@@ -2,7 +2,7 @@
     <div class="col s1 m4 l4">
         {{#if user}}
         <div class="card horizontal">
-            <div class="card-image center-img">
+            <div class="card-image center-card">
                 <img class='profile responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
 
             </div>
@@ -50,16 +50,17 @@
         <div class='card comment-post-id' id='comment-post-{{id}}'>
             <div class="card-title center">
 
+
                 <h4>{{title}} by <a href='/feed/profile/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a> on
                     {{format_date created_at}}</h4>
             </div>
-            <div class='card-content center'>
+            <div class='card-content center-card'>
                 <p>{{body}}</p>
             </div>
 
             <div class="row">
                 <div class="col s-10">
-                    <div class="card-image center-img">
+                    <div class="card-image center-card">
                         <img class='responsive-img' src={{post_img}}>
                     </div>
                 </div>
@@ -236,9 +237,9 @@
 </div>
 
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
-<script src="/javascript/add-post.js"></script>
 <script src="/javascript/add-comment.js"></script>
-{{#if groups}}
+{{#if feed}}
+<script src="/javascript/add-post.js"></script>
 <script src="/javascript/join-group.js"></script>
 <script src="/javascript/add-group.js"></script>
 {{/if}}
