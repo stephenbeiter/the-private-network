@@ -41,11 +41,7 @@ User.init(
     },
     profile_img: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "https://stroseschool.stroselions.net/wp-content/uploads/2018/04/profile-blank-reva-240x300.png",
-      validate: {
-        isURL: true
-      }
+      allowNull: true
     },
     last_login: {
       type: DataTypes.TIME,
