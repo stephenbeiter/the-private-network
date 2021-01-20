@@ -55,7 +55,10 @@ html {
 }
 
 .material-icons {
-  margin: 0;
+  margin: 0 0.5rem;
+  color: black;
+}
+button .material-icons {
   color: white;
 }
 

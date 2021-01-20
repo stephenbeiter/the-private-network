@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function newCommentFromHandler(event) {
   event.preventDefault();
-
+  console.log("target-id:", event.target.id);
   const body = document.querySelector('input[name="add-comment"]').value.trim();
   const post_id = document.querySelector(".add-comment-form").id.split("-")[2];
 
@@ -29,4 +29,4 @@ async function newCommentFromHandler(event) {
   }
 }
 
-document.querySelector(".add-comment-form").addEventListener("submit", newCommentFromHandler);
+document.querySelector(".post-col").addEventListener("submit", newCommentFromHandler);
