@@ -9,8 +9,7 @@ async function newGroupFromHandler(event) {
     method: "post",
     body: JSON.stringify({
       groupname,
-      group_color,
-      group_admin: 1,
+      group_color
     }),
     headers: { "Content-Type": "application/json" },
   });

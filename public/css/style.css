@@ -13,7 +13,7 @@
 
 body,
 html {
-  font-family: "Montserrat:wght@400", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: var(--body);
   margin: 0;
   padding: 0;
@@ -33,7 +33,7 @@ html {
 
 .form-input {
   border: solid 0.1rem var(--nav) !important;
-  border-radius: 0.5rem !important;
+  border-radius: 4px !important;
   height: 2.2rem !important;
 }
 
@@ -43,6 +43,8 @@ html {
   color: var(--nav) !important;
   border: solid 0.1rem var(--nav) !important;
   font-weight: 500 !important;
+  font-family: "Montserrat" !important;
+  padding: 8px 14px;
 }
 
 .card.card-round {
@@ -53,8 +55,8 @@ html {
 }
 
 .material-icons {
-  margin: 0 10px;
-  color: var(--nav);
+  margin: 0;
+  color: white;
 }
 
 nav {
