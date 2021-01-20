@@ -1,5 +1,3 @@
-const session = require("express-session");
-
 // capture input for creating a new post group
 async function newGroupFromHandler(event) {
   event.preventDefault();
