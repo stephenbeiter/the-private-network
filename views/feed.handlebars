@@ -47,8 +47,8 @@
         {{/if}}
 
         {{#each posts as |post|}}
-        <div class='card comment-post-id' id='comment-post-{{id}}'>
-            <div class="card-title center">
+        <div class='card comment-post-id'>
+            <div class="card-title post-title grey lighten-5 flow-text">
 
 
                 <h4>{{title}} by <a href='/feed/profile/{{user.id}}'>{{user.first_name}} {{user.last_name}}</a> on
@@ -84,7 +84,7 @@
 
             <div class="card-action">
                 <div class="card card-round z-depth-0 comment">
-                    <form class='add-comment-form z-depth-0'>
+                    <form class='add-comment-form z-depth-0' id='comment-post-{{id}}'>
                         <div class=" input-field">
                             <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
                             <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />

@@ -7,7 +7,7 @@ async function newCommentFromHandler(event) {
   event.preventDefault();
 
   const body = document.querySelector('input[name="add-comment"]').value.trim();
-  const post_id = document.querySelector(".comment-post-id").id.split("-")[2];
+  const post_id = document.querySelector(".add-comment-form").id.split("-")[2];
 
   const response = await fetch("/api/comments", {
     method: "POST",

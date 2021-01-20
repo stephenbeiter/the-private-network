@@ -93,6 +93,11 @@ nav {
   padding: 0 0.5rem;
 }
 
+.card .card-title {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
 .collapsible {
   border: none;
 }
@@ -233,6 +238,8 @@ nav ul a {
   background-color: rgba(4, 24, 49, 0.5);
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  padding-left: 1.4rem;
+  padding-bottom: 0.3rem;
 }
 
 .horizontal-content {
@@ -259,6 +266,11 @@ nav ul a {
   display: block;
 }
 
+.post-title h4 {
+  font-size: 1.1rem !important;
+  padding: 0.1rem 0.5rem !important;
+}
+
 .add-comment {
   width: 65% !important;
   border: none !important;
@@ -278,10 +290,9 @@ input[type="text"]:not(.browser-default) {
 
 .slogan {
   background-color: transparent;
-  margin-top: 45% !important;
+  margin-top: 25% !important;
   display: flex;
   color: var(--dark);
-  font-size: x-large;
 }
 
 #search {
@@ -309,4 +320,91 @@ textarea {
 .user-name {
   font-size: smaller;
   font-weight: bolder;
+}
+
+@media screen and (max-width: 1200px) {
+  .btn {
+    padding: 0 4px !important;
+  }
+  .matrix {
+    font-size: 3rem;
+  }
+
+  .welcome {
+    font-size: 2.7rem;
+    line-height: 1;
+  }
+}
+
+.card-title span,
+.card-title > h4 {
+  line-height: 1.6;
+  padding: 0.1rem;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1000px) {
+  nav .brand-logo {
+    left: 17%;
+  }
+
+  .matrix {
+    font-size: 2.6rem;
+  }
+
+  .welcome {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .btn {
+    font-size: 8px;
+    padding: 0;
+  }
+  nav .brand-logo {
+    left: 22%;
+  }
+  nav ul a,
+  .btn-no-style {
+    font-size: 0.9rem;
+  }
+
+  .card .title {
+    font-size: 1.1rem;
+  }
+
+  .slogan {
+    margin-top: 10% !important;
+  }
+}
+@media screen and (max-width: 540px) {
+  nav .brand-logo {
+    left: 20%;
+    font-size: 1.6rem;
+  }
+  body {
+    font-size: 0.9rem;
+  }
+  .matrix-img {
+    max-width: 100%;
+  }
+  .matrix {
+    font-size: 2.9rem;
+  }
+
+  .col > :first-child {
+    margin-top: 2vh !important;
+  }
+  @media screen and (max-width: 450px) {
+    nav .brand-logo {
+      left: 25%;
+      font-size: 1.3rem;
+    }
+    nav ul a,
+    .btn-no-style {
+      font-size: 0.7rem;
+    }
+  }
 }
