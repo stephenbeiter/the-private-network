@@ -2,7 +2,7 @@
 async function joinGroupHandler(event) {
   event.preventDefault();
 
-  const group_id = document.querySelector("#groups").value;
+  const group_id = document.querySelector("#join-groups").value;
 
   const response = await fetch("/api/users/addgroup", {
     method: "POST",

@@ -21,9 +21,11 @@ async function newCommentFromHandler(event) {
   });
 
   if (response.ok) {
+    console.log(body, post_id);
     document.location.replace("/feed");
   } else {
     alert(response.statusText);
+    console.log(body, post_id);
   }
 }
 
