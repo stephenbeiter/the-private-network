@@ -3,6 +3,9 @@ const { User, Group } = require("../../models");
 
 // Create user
 router.post("/", (req, res) => {
+  if (req.body.profile_img === "") {
+    req.body.profile_img = "https://images-na.ssl-images-amazon.com/images/I/31L9QulMWnL.jpg";
+  };
   User.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,

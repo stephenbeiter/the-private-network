@@ -5,7 +5,7 @@ const { Group, User } = require("../../models");
 router.post("/", (req, res) => {
   Group.create({
     groupname: req.body.groupname,
-    group_admin: req.body.group_admin,
+    group_admin: req.session.user_id,
     group_img: req.body.group_img,
     group_color: req.body.group_color,
   })

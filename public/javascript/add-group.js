@@ -1,3 +1,5 @@
+const session = require("express-session");
+
 // capture input for creating a new post group
 async function newGroupFromHandler(event) {
   event.preventDefault();
@@ -9,8 +11,7 @@ async function newGroupFromHandler(event) {
     method: "post",
     body: JSON.stringify({
       groupname,
-      group_color,
-      group_admin: 1,
+      group_color
     }),
     headers: { "Content-Type": "application/json" },
   });
