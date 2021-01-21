@@ -19,7 +19,7 @@
         </div>
         {{/if}}
 
-        {{#if groups}}
+        {{#if feed}}
         <div class="card">
             <div class="card-title groups">
                 <span class="material-icons white-text">
@@ -86,7 +86,8 @@
                 <div class="card card-round z-depth-0 comment">
                     <form class='add-comment-form z-depth-0' id='comment-post-{{id}}'>
                         <div class=" input-field">
-                            <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
+                            <label class="label-icon" for="add-cmment"><i
+                                    class="material-icons comment-icon">add_comment</i></label>
                             <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
                         </div>
                     </form>
@@ -162,7 +163,7 @@
             </div>
         </div>
         {{/if}}
-        {{#if groups}}
+        {{#if feed}}
         <div class="card card-round center">
             <span class="material-icons">
                 add_circle
