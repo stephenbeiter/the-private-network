@@ -49,6 +49,8 @@ html {
   font-weight: 500 !important;
   font-family: "Montserrat" !important;
   padding: 8px 14px;
+  width: 90%;
+  margin: 0.5rem;
 }
 
 .card.card-round {
@@ -59,8 +61,11 @@ html {
 }
 
 .material-icons {
-  margin: 0 0.5rem;
-  color: black;
+  margin: 0 0.9rem;
+  color: var(--nav);
+}
+.material-icons.profile {
+  margin-right: 0.1rem;
 }
 button .material-icons {
   color: white;
@@ -112,7 +117,10 @@ nav {
 }
 a {
   color: var(--nav);
-  font-weight: 900 !important;
+  font-weight: 650 !important;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 a:hover {
@@ -121,7 +129,7 @@ a:hover {
 
 .card-title span,
 .card-title > h4 {
-  font-weight: 500;
+  font-weight: 900;
   line-height: 1.8;
   color: rgb(43, 42, 42);
   padding: 0.5rem;
@@ -276,8 +284,8 @@ nav ul a {
 }
 
 .post-title h4 {
-  font-size: 1.1rem !important;
-  padding: 0.1rem 0.5rem !important;
+  font-size: 1.2rem !important;
+  padding: 0.5rem 0.9rem !important;
 }
 
 .add-comment {
@@ -298,6 +306,22 @@ nav ul a {
 input[type="text"]:not(.browser-default) {
   background-color: transparent !important;
   box-shadow: none !important;
+  margin: 0.5rem;
+  width: 90%;
+}
+.login-form,
+.sign-up-form {
+  margin: 0.6rem;
+}
+.login-form-card,
+.sign-up-form-card {
+  margin-top: 15vh !important;
+}
+.login-form-card span {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .slogan {
@@ -352,7 +376,7 @@ textarea {
 .card-title > h4 {
   line-height: 1.6;
   padding: 0.1rem;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 1000px) {
