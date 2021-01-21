@@ -7,20 +7,20 @@ const exphbs = require("express-handlebars");
 const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
 
-const cloudinary = require('cloudinary-core');
+const cloudinary = require("cloudinary-core");
 const cl = new cloudinary.Cloudinary({ cloud_name: "tpncloudinary", secure: true });
 
-const session = require('express-session');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const tpnStore = new SequelizeStore({
-  db: sequelize
+  db: sequelize,
 });
 const sess = {
-  secret: 'I know Kung Fu!',
+  secret: "I know Kung Fu!",
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  store: tpnStore
+  store: tpnStore,
 };
 tpnStore.sync();
 app.use(session(sess));
