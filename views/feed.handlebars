@@ -21,7 +21,7 @@
 
         {{#if feed}}
         <div class="card">
-            <div class="card-title groups">
+            <div class="card-title groups valign-wrapper">
                 <span class="material-icons white-text">
                     groups
                 </span><span class='desktop white-text'>Groups</span>
@@ -85,7 +85,7 @@
             <div class="card-action">
                 <div class="card card-round z-depth-0 comment">
                     <form class='add-comment-form z-depth-0' id='comment-post-{{id}}'>
-                        <div class=" input-field">
+                        <div class=" input-field valign-wrapper">
                             <label class="label-icon" for="add-cmment"><i
                                     class="material-icons comment-icon">add_comment</i></label>
                             <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
@@ -101,7 +101,7 @@
         <div class="card card-round">
             <div class="card-title search-card">
                 <form action='/feed/search/post' class='search-form'>
-                    <div class="input-field">
+                    <div class="input-field valign-wrapper">
                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                         <input id='search' placeholder='Search' type='search' name='term' />
                     </div>
