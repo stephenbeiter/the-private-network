@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col s1 m4 l4">
+    <div class="col m3 l4 hide-on-small-only">
         {{#if user}}
         <div class="card horizontal">
             <div class="card-image center-card">
@@ -19,7 +19,7 @@
         </div>
         {{/if}}
 
-        {{#if groups}}
+        {{#if feed}}
         <div class="card">
             <div class="card-title groups">
                 <span class="material-icons white-text">
@@ -27,7 +27,7 @@
                 </span><span class='desktop white-text'>Groups</span>
             </div>
             {{#each groups as |group|}}
-            <div class="card-action">
+            <div class="card-action groups">
                 <a href='/feed/groups/{{id}}'>{{groupname}}</a>
             </div>
             {{/each}}
@@ -35,7 +35,7 @@
         {{/if}}
 
     </div>
-    <div class="col s12 m5 l5 post-col">
+    <div class="col s10 m6 l5 post-col">
         {{#if groupPage}}
 
         <h2 class='page-header'>{{posts.[0].[group].[groupname]}}'s posts</h2>
@@ -86,7 +86,8 @@
                 <div class="card card-round z-depth-0 comment">
                     <form class='add-comment-form z-depth-0' id='comment-post-{{id}}'>
                         <div class=" input-field">
-                            <label class="label-icon" for="add-cmment"><i class="material-icons">add_comment</i></label>
+                            <label class="label-icon" for="add-cmment"><i
+                                    class="material-icons comment-icon">add_comment</i></label>
                             <input class='add-comment' placeholder='Add a comment' type='text' name='add-comment' />
                         </div>
                     </form>
@@ -95,7 +96,7 @@
         </div>
         {{/each}}
     </div>
-    <div class="col s1 m3 l3">
+    <div class="col s2 m3 l3 center">
         {{#if feed}}
         <div class="card card-round">
             <div class="card-title search-card">
@@ -108,11 +109,12 @@
             </div>
         </div>
 
-        <div class="card card-round center">
-            <span class="material-icons">
-                edit
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal1">Start a Post</a>
+        <div class="card card-round  valign-wrapper">
+
+            <a class="white black-text btn modal-trigger" href="#modal1"> <span class="material-icons">
+                    edit
+                </span><span class='hide-on-small-only'>Start a
+                    Post</span></a>
 
             <!-- Modal Structure -->
             <div id="modal1" class="modal">
@@ -162,12 +164,13 @@
             </div>
         </div>
         {{/if}}
-        {{#if groups}}
-        <div class="card card-round center">
-            <span class="material-icons">
-                add_circle
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal2">Create a Group</a>
+        {{#if feed}}
+        <div class="card card-round center valign-wrapper">
+
+            <a class="white black-text btn modal-trigger" href="#modal2"><span class="material-icons">
+                    add_circle
+                </span><span class='hide-on-small-only'>Create a
+                    Group</span></a>
 
             <!-- Modal Structure -->
             <div id="modal2" class="modal">
@@ -194,11 +197,12 @@
         </div>
 
 
-        <div class="card card-round center">
-            <span class="material-icons">
-                group_add
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal3">Join a Group</a>
+        <div class="card card-round center valign-wrapper">
+
+            <a class="white black-text btn modal-trigger" href="#modal3"><span class="material-icons">
+                    group_add
+                </span><span class='hide-on-small-only'>Join a
+                    Group</span></a>
 
             <div id="modal3" class="modal">
                 {{> select-group groups}}
@@ -208,11 +212,12 @@
         {{/if}}
 
         {{#if user}}
-        <div class="card card-round center">
-            <span class="material-icons">
-                person_search
-            </span>
-            <a class="white black-text btn modal-trigger" href="#modal4">Search a User</a>
+        <div class="card card-round center valign-wrapper">
+
+            <a class="white black-text btn modal-trigger" href="#modal4"><span class="material-icons">
+                    person_search
+                </span><span class='hide-on-small-only'>Search a
+                    User</span></a>
 
             <!-- Modal Structure -->
             <div id="modal4" class="modal">
