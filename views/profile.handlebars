@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col s6 push-s3 m4 push-m4 l4 push-l4">
+
+        <div class="card profile-page center ">
+            <div class="card-image center-card">
+                <img class='profile responsive-img' src='{{user.profile_img}}' alt="user's profile picture">
+            </div>
+            <div class="card-title">
+                <p>{{user.first_name}} {{user.last_name}}</p>
+            </div>
+            <div class="card-title">
+                <a class='profile' href='mailto:{{user.email}}'>Email Me</a><span class="material-icons">
+                    mail
+                </span>
+
+            </div>
+            <div class="card-title">
+                <a class='profile' href='/feed/users/{{user.id}}'>My Posts</a><span class="material-icons">
+                    article
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+</div>

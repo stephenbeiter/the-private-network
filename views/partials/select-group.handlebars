@@ -1,0 +1,22 @@
+<div class="modal-content">
+    <div class="row">
+
+        <div class="input-field col s12">
+            <form class='join-group-form'>
+
+                <label>Choose a group</label>
+                <select id='join-groups'>
+                    <option value="" disabled selected>Select a group</option>
+                    {{#each this}}
+                    <option id='group-{{id}}' class="group-name" value='{{id}}'>{{groupname}}</option>
+                    {{/each}}
+                </select>
+                <br><br>
+                <input type='submit' class='modal-close btn dark-blue join-group' value='Join'>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
