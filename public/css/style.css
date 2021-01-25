@@ -392,7 +392,7 @@ textarea {
     font-size: 4.5rem;
   }
   .matrix-img {
-    max-width: 180%;
+    max-width: 120%;
   }
 }
 @media screen and (max-width: 1400px) {
