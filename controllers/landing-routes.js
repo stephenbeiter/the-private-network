@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User, Group } = require("../models");
+const { User } = require("../models");
 
 // index route
 router.get("/", (req, res) => res.render("index", { layout: "landing" }));
@@ -12,7 +12,7 @@ router.get("/signup", (req, res) => {
 // login route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('/feed');
     return;
   }
   res.render("login", { layout: "landing" });

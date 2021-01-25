@@ -322,6 +322,9 @@ nav ul a {
   max-height: 24px;
   /* margin: 0.5rem 1rem; */
 }
+.add-comment-form div {
+  margin-top: 1.5rem;
+}
 .search-card {
   border-radius: 1rem !important;
 }
@@ -392,7 +395,7 @@ textarea {
     font-size: 4.5rem;
   }
   .matrix-img {
-    max-width: 180%;
+    max-width: 120%;
   }
 }
 @media screen and (max-width: 1400px) {
