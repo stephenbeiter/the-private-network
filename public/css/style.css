@@ -22,6 +22,7 @@ html {
   border-radius: 0.5rem;
   color: darkslategrey;
 }
+
 .comment {
   border: solid 0.1rem var(--nav);
   padding: 2% 1%;
@@ -56,14 +57,6 @@ html {
   width: 90% !important;
 }
 
-.card.card-round {
-  border-radius: 2rem !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-}
-
 .material-icons {
   margin: 0 0.9rem;
   color: var(--nav);
@@ -77,10 +70,7 @@ button .material-icons {
 }
 .comment-icon {
   margin-top: 0.5rem;
-}
-
-nav {
-  background-color: var(--nav) !important;
+  margin-left: 0.4rem;
 }
 
 .btn {
@@ -91,6 +81,8 @@ nav {
 .btn.modal-trigger {
   margin: 0.5rem;
   box-shadow: none;
+  display: flex;
+  align-items: center;
 }
 .col > :first-child {
   margin-top: 3vh;
@@ -122,6 +114,7 @@ nav {
 
 .collapsible {
   border: none;
+  margin: 0.3rem 0 0 0;
 }
 a {
   color: var(--nav);
@@ -134,7 +127,16 @@ a {
 a:hover {
   color: rgb(209, 64, 20) !important;
 }
-
+.card.card-round {
+  border-radius: 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.card.card-round.comment {
+  margin: 0 5%;
+}
 .card-title span,
 .card-title > h4 {
   font-weight: 900;
@@ -172,7 +174,7 @@ a:hover {
 a.profile {
   font-weight: 600;
   font-size: large;
-  padding-left: 10%;
+  padding-left: 0;
 }
 
 img.responsive-img.profile {
@@ -198,9 +200,18 @@ img.responsive-img.profile {
   display: flex;
 }
 
+.desktop {
+  padding: 2px !important;
+}
+
 .landing-page {
   background-color: var(--dark) !important;
 }
+
+nav {
+  background-color: var(--nav) !important;
+}
+
 nav ul a,
 nav .brand-logo {
   color: var(--body);
@@ -224,7 +235,7 @@ nav ul a {
 }
 
 .matrix {
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 5rem;
 }
 
@@ -242,8 +253,8 @@ nav ul a {
   position: absolute;
 }
 .matrix-img {
-  margin-top: 20% !important;
-  max-width: 80%;
+  margin-top: 18vh !important;
+  max-width: 200%;
   height: auto;
 }
 
@@ -346,16 +357,15 @@ input[type="text"]:not(.browser-default) {
 }
 .slogan {
   background-color: transparent;
-  margin-top: 25% !important;
-  display: flex;
+  margin-top: 30vh !important;
   color: var(--dark);
 }
 
 #search {
   width: 65%;
   border: none;
-  padding-left: 2.4rem;
-  max-height: 20px;
+  padding-left: 3rem;
+  max-height: 16px;
 }
 .med-green {
   background-color: var(--med-green) !important;
@@ -377,40 +387,78 @@ textarea {
   font-size: smaller;
   font-weight: bolder;
 }
+@media screen and (max-width: 1500px) {
+  .matrix {
+    font-size: 4.5rem;
+  }
+  .matrix-img {
+    max-width: 180%;
+  }
+}
+@media screen and (max-width: 1400px) {
+  h2 {
+    line-height: 90%;
+  }
 
-@media screen and (max-width: 1200px) {
+  .matrix-img {
+    max-width: 120% !important;
+  }
+  .matrix {
+    font-size: 4.2rem;
+  }
+  .welcome {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 1250px) {
   .btn {
     padding: 0 4px !important;
   }
   .matrix {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   .welcome {
-    font-size: 2.7rem;
+    font-size: 2.2rem;
     line-height: 1;
+  }
+
+  .card-title span,
+  .card-title > h4 {
+    line-height: 1.6;
+    padding: 0.1rem;
+    font-size: 16px;
   }
 }
 
-.card-title span,
-.card-title > h4 {
-  line-height: 1.6;
-  padding: 0.1rem;
-  font-size: 16px;
-}
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   nav .brand-logo {
-    left: 17%;
+    left: 2%;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+
+  .card.card-round {
+    width: 95%;
+  }
+
+  .slogan {
+    margin-top: 10vh !important;
+    margin-left: 4rem;
   }
 
   .matrix {
-    font-size: 2.6rem;
+    font-size: 2.9rem !important;
   }
 
   .welcome {
-    font-size: 2.4rem;
-    line-height: 1;
+    font-size: 2rem !important;
+  }
+  .matrix-img {
+    margin-top: 8vh !important;
+    max-width: 110% !important;
   }
 }
 
@@ -419,7 +467,7 @@ textarea {
     padding-left: 0;
   }
   .btn {
-    font-size: 9px;
+    font-size: 8px;
     padding: 0 !important;
   }
   nav .brand-logo {
@@ -428,8 +476,8 @@ textarea {
   nav ul a,
   .btn-no-style {
     font-size: 0.9rem;
+    line-height: 5;
   }
-
   .card .title {
     font-size: 1.1rem;
   }
@@ -461,29 +509,55 @@ textarea {
     font-size: 0.8rem !important;
   }
   .slogan {
-    margin-top: 10% !important;
+    margin-top: 12vh !important;
+    margin-left: 2vh;
+  }
+
+  .welcome {
+    font-size: 2rem !important;
+    line-height: 1;
+  }
+  .matrix {
+    font-size: 4rem !important;
+    line-height: 1;
+  }
+
+  .matrix-img {
+    margin-top: 5vh !important;
+    max-width: 100% !important;
+    margin-left: 5vh;
   }
 }
+
 @media screen and (max-width: 540px) {
   .card.card-round {
     border-radius: 1rem;
     width: 100%;
   }
+  h2 {
+    line-height: 65%;
+  }
   .material-icons {
     margin: 5%;
   }
   nav .brand-logo {
-    left: 23%;
+    left: 29%;
     font-size: 1.4rem;
   }
   body {
     font-size: 0.9rem;
   }
+
+  .welcome {
+    font-size: 1.5rem !important;
+    line-height: 0.8;
+  }
   .matrix-img {
-    max-width: 100%;
+    max-width: 110% !important;
+    margin-left: 0vh;
   }
   .matrix {
-    font-size: 2.9rem;
+    font-size: 2.6rem !important;
   }
 
   #search {
@@ -495,14 +569,18 @@ textarea {
   .col > :first-child {
     margin-top: 2vh !important;
   }
-  @media screen and (max-width: 450px) {
-    nav .brand-logo {
-      left: 25%;
-      font-size: 1.3rem;
-    }
-    nav ul a,
-    .btn-no-style {
-      font-size: 0.7rem;
-    }
+}
+@media screen and (max-width: 450px) {
+  nav .brand-logo {
+    left: 28%;
+    font-size: 1.3rem;
+  }
+  nav ul a,
+  .btn-no-style {
+    font-size: 0.7rem;
+  }
+
+  .material-icons {
+    margin: 0;
   }
 }

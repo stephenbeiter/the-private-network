@@ -15,10 +15,8 @@ async function joinGroupHandler(event) {
   });
 
   if (response.ok) {
-    console.log(group_id);
     document.location.replace("/feed");
   } else {
-    console.log(group_id);
     alert(response.statusText);
   }
 }
