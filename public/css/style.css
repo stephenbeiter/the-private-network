@@ -22,6 +22,7 @@ html {
   border-radius: 0.5rem;
   color: darkslategrey;
 }
+
 .comment {
   border: solid 0.1rem var(--nav);
   padding: 2% 1%;
@@ -56,14 +57,6 @@ html {
   width: 90% !important;
 }
 
-.card.card-round {
-  border-radius: 2rem !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-}
-
 .material-icons {
   margin: 0 0.9rem;
   color: var(--nav);
@@ -77,10 +70,7 @@ button .material-icons {
 }
 .comment-icon {
   margin-top: 0.5rem;
-}
-
-nav {
-  background-color: var(--nav) !important;
+  margin-left: 0.4rem;
 }
 
 .btn {
@@ -124,6 +114,7 @@ nav {
 
 .collapsible {
   border: none;
+  margin: 0.3rem 0 0 0;
 }
 a {
   color: var(--nav);
@@ -136,7 +127,16 @@ a {
 a:hover {
   color: rgb(209, 64, 20) !important;
 }
-
+.card.card-round {
+  border-radius: 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.card.card-round.comment {
+  margin: 0 5%;
+}
 .card-title span,
 .card-title > h4 {
   font-weight: 900;
@@ -200,9 +200,18 @@ img.responsive-img.profile {
   display: flex;
 }
 
+.desktop {
+  padding: 2px !important;
+}
+
 .landing-page {
   background-color: var(--dark) !important;
 }
+
+nav {
+  background-color: var(--nav) !important;
+}
+
 nav ul a,
 nav .brand-logo {
   color: var(--body);
@@ -386,7 +395,7 @@ textarea {
     font-size: 4.5rem;
   }
   .matrix-img {
-    max-width: 180%;
+    max-width: 120%;
   }
 }
 @media screen and (max-width: 1400px) {
