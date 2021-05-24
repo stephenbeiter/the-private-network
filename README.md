@@ -10,9 +10,13 @@ A social media app designed for use on personal and private servers.  Enjoy a sp
 * [Tests](#Tests)
 * [Questions](#Questions)
 ## Installation
-1. Download this repo.  2. Open your terminal and run npm install.  3. Create a .env file to store your database account information.  4. In your terminal, run npm start.
+1. Download this repo.
+2. Open your terminal and run npm install.
+3. Create a .env file to store your database account information.
+4. Open the server.js file and use your cloudinary information on line 11.
+4. In your terminal, run npm start.
 ## Usage
-This app requires a mysql database and cloudinary account in order to function properly.
+This app requires a mysql database and cloudinary account in order to function properly. To demo a deployed version on heroku, click [here](https://the-private-network.herokuapp.com/)
 ## License
 This project is covered under the ISC license.
 ## Contributing
